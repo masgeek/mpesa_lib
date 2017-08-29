@@ -1,0 +1,16 @@
+{
+    "name": "fatelord/mpesa_library",
+    "description": "Simplified mpesa library for usage in PHP applications",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Sammy Barasa",
+            "email": "barsamms@gmail.com"
+        }
+    ],
+    "require": {
+        "nategood/httpful": "*",
+        "catfan/medoo":"*"
+    }
+}
