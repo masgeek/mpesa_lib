@@ -23,6 +23,7 @@ class MPESA_FACTORY
      */
     public $BASE_URL = 'https://sandbox.safaricom.co.ke';
 
+    public $access_token;
     protected $APP_CONSUMER_KEY;
     protected $APP_CONSUMER_SECRET;
     protected $database;
@@ -74,6 +75,7 @@ class MPESA_FACTORY
     /**
      * Use this API for reversal transaction
      * @param string $endpoint
+     * @throws \Exception
      */
     public function Reversal($endpoint = '/mpesa/reversal/v1/request')
     {
@@ -124,8 +126,36 @@ class MPESA_FACTORY
      * For Lipa Na M-Pesa online payment using STK Push.
      * @param string $endpoint
      */
-    public function LipaNaMpesaProcessRequest($endpoint = '/mpesa/stkpush/v1/processrequest')
+    public function LipaNaMpesaProcessRequest(array $body, $endpoint = '/mpesa/stkpush/v1/processrequest')
     {
+        $uri = "{$this->BASE_URL}{$endpoint}";
+
+        $payload = json_encode($body); //convert array to json
+
+        /*
+        $response = Request::post($uri)// Build a PUT request...
+        ->sendsJson()
+        ->authenticateWith('username', 'password')
+        ->addHeaders(array(
+            'Authorization' => 'Bearer ' . $this->access_token,
+        ))
+            ->body($payload)
+            ->send();
+
+        return $response;*/
+        $curl = curl_init();
+        curl_setopt($curl, CURLOPT_URL, $uri);
+        curl_setopt($curl, CURLOPT_HTTPHEADER, array('Content-Type:application/json',"Authorization:Bearer 63Ns4zyD8JHr1UOHDclnHUyH80j4")); //setting custom header
+
+
+
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($curl, CURLOPT_POST, true);
+        curl_setopt($curl, CURLOPT_POSTFIELDS, $payload);
+
+        $curl_response = curl_exec($curl);
+
+        return  $curl_response;
     }
 
     /**
