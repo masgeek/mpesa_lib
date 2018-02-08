@@ -6,4 +6,5 @@
  * Time: 11:56
  */
 
-var_dump($_REQUEST);
+$req_dump = print_r( $_REQUEST, true );
+$fp = file_put_contents( 'request.log',serialize($req_dump) );

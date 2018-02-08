@@ -19,16 +19,8 @@ require_once 'mpesa/MPESA_FACTORY.php';
 use mpesa\MPESA_FACTORY;
 
 
-$mpesa = new MPESA_FACTORY(APP_CONSUMER_KEY, APP_CONSUMER_SECRET);
+$mpesa = new MPESA_FACTORY();
 
-$token_query = $mpesa->GetAccessToken();
-
-$token = $token_query->access_token;
-$expiry = $token_query->expires_in;
-
-$mpesa->access_token = $token;
-
-echo $token;
 $lipa_na_mpesa_post = array(
     //Fill in the request parameters with valid values
     'BusinessShortCode' => '601373',
@@ -55,6 +47,6 @@ $c2b_post_data = array(
 
 
 //$resp = $mpesa->LipaNaMpesaProcessRequest($token, $lipa_na_mpesa_post);
-$resp = $mpesa->ConsumerToBusinessSimulate($c2b_post_data, $token);
-var_dump($resp);
+//$resp = $mpesa->ConsumerToBusinessSimulate($c2b_post_data);
+//var_dump($resp);
 

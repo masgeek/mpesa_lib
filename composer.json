@@ -11,6 +11,8 @@
     ],
     "require": {
         "nategood/httpful": "*",
-        "catfan/medoo":"*"
+        "catfan/medoo":"*",
+        "safaricom/mpesa": "^1.0",
+        "vlucas/phpdotenv": "^2.4"
     }
 }

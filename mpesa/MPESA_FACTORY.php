@@ -10,6 +10,7 @@ namespace mpesa;
 
 $root_dir = dirname(dirname(__FILE__));
 
+use Dotenv\Dotenv;
 use Httpful\Request;
 use Medoo\Medoo;
 
@@ -21,11 +22,12 @@ class MPESA_FACTORY
      * Base url for the API endpoints
      * @var string
      */
-    public $BASE_URL = 'https://sandbox.safaricom.co.ke';
+    protected $BASE_URL;
 
-    public $access_token;
+    //public $access_token;
     protected $APP_CONSUMER_KEY;
     protected $APP_CONSUMER_SECRET;
+    protected $APPLICATION_STATUS;
     protected $database;
 
     /**
@@ -34,11 +36,24 @@ class MPESA_FACTORY
      * @param null $consumer_secret
      * @throws \Exception
      */
-    function __construct($consumer_key, $consumer_secret)
+    function __construct()
     {
+        //read the environment variables
+        $env = new Dotenv(dirname(__DIR__));
+        $data = $env->load();
         //set the consumer keys
-        $this->APP_CONSUMER_KEY = $consumer_key;
-        $this->APP_CONSUMER_SECRET = $consumer_secret;
+        $this->APP_CONSUMER_KEY = getenv('consumer_key');
+        $this->APP_CONSUMER_SECRET = getenv('consumer_secret');
+        $this->APP_CONSUMER_SECRET = getenv('consumer_secret');
+        $this->APPLICATION_STATUS = getenv('application_status');
+
+        if ($this->APPLICATION_STATUS == 'live') {
+            $this->BASE_URL = 'https://api.safaricom.co.ke';
+        } else {
+            $this->BASE_URL = 'https://sandbox.safaricom.co.ke';
+        }
+        var_dump($this->APPLICATION_STATUS);
+        var_dump($this->BASE_URL);
     }
 
 
@@ -46,8 +61,9 @@ class MPESA_FACTORY
      * Get access token used to authorize mpesa transactions
      * @param string $endpoint
      * @return array|object|string
+     * @throws \Httpful\Exception\ConnectionErrorException
      */
-    public function GetAccessToken($endpoint = '/oauth/v1/generate?grant_type=client_credentials')
+    protected function GenerateToken($endpoint = '/oauth/v1/generate?grant_type=client_credentials')
     {
         $uri = "{$this->BASE_URL}{$endpoint}";
 
@@ -60,7 +76,7 @@ class MPESA_FACTORY
             ->strictSSL(false)
             ->send();
 
-        return $response->body;//->access_token;
+        return $response->body->access_token;
     }
 
     /**
@@ -130,14 +146,13 @@ class MPESA_FACTORY
      * @param array $body
      * @param string $endpoint
      * @return mixed
+     * @throws \Httpful\Exception\ConnectionErrorException
      */
-    public function LipaNaMpesaProcessRequest($token, array $body, $endpoint = '/mpesa/stkpush/v1/processrequest')
+    public function LipaNaMpesaProcessRequest(array $body, $endpoint = '/mpesa/stkpush/v1/processrequest')
     {
         $uri = "{$this->BASE_URL}{$endpoint}";
 
-        $payload = json_encode($body); //convert array to json
-
-        return $this->ProcessRequest($payload, $uri, $token);
+        return $this->ProcessRequest($body, $uri);
     }
 
     /**
@@ -154,14 +169,14 @@ class MPESA_FACTORY
      * @param $body
      * @param string $endpoint
      * @return mixed
+     * @throws \Httpful\Exception\ConnectionErrorException
      */
-    public function ConsumerToBusinessSimulate($body, $token, $endpoint = '/mpesa/c2b/v1/simulate')
+    public function ConsumerToBusinessSimulate($body, $endpoint = '/mpesa/c2b/v1/simulate')
     {
         $uri = "{$this->BASE_URL}{$endpoint}";
 
-        $payload = json_encode($body); //convert array to json
 
-        return $this->ProcessRequest($payload, $uri, $token);
+        return $this->ProcessRequest($body, $uri);
     }
 
 
@@ -202,8 +217,16 @@ BusinessTransferFromMMFToUtility	Transferring funds from paybills MMF to another
         return $date->getTimestamp();
     }
 
-    protected function ProcessRequest($payload, $uri, $token)
+    /**
+     * @param array $body
+     * @param $uri
+     * @return mixed
+     * @throws \Httpful\Exception\ConnectionErrorException
+     */
+    protected function ProcessRequest(array $body, $uri)
     {
+        $token = $this->GenerateToken();
+        $payload = json_encode($body); //convert array to json
         $curl = curl_init();
         curl_setopt($curl, CURLOPT_URL, $uri);
         curl_setopt($curl, CURLOPT_HTTPHEADER, array('Content-Type:application/json', "Authorization:Bearer {$token}")); //setting custom header
