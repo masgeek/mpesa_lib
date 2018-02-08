@@ -32,9 +32,6 @@ class MPESA_FACTORY
 
     /**
      * MPESA_FACTORY constructor.
-     * @param null $consumer_key
-     * @param null $consumer_secret
-     * @throws \Exception
      */
     function __construct()
     {
@@ -52,8 +49,8 @@ class MPESA_FACTORY
         } else {
             $this->BASE_URL = 'https://sandbox.safaricom.co.ke';
         }
-        var_dump($this->APPLICATION_STATUS);
-        var_dump($this->BASE_URL);
+        //var_dump($this->APPLICATION_STATUS);
+        //var_dump($this->BASE_URL);
     }
 
 
@@ -142,7 +139,6 @@ class MPESA_FACTORY
 
     /**
      * For Lipa Na M-Pesa online payment using STK Push.
-     * @param $token
      * @param array $body
      * @param string $endpoint
      * @return mixed
@@ -210,11 +206,15 @@ BusinessTransferFromMMFToUtility	Transferring funds from paybills MMF to another
         return $identifier;
     }
 
-    public function GetTimeStamp()
+    /**
+     * @param bool $asDate
+     * @return int|string
+     */
+    public function GetTimeStamp($asDate = false)
     {
         $date = new \DateTime();
 
-        return $date->getTimestamp();
+        return $asDate ? $date->format('Ymdhis') : $date->getTimestamp();
     }
 
     /**

@@ -1,5 +1,6 @@
 <?php
 /* @var $mpesa MPESA_FACTORY */
+/* @throws \Httpful\Exception\ConnectionErrorException */
 
 /**
  *
@@ -21,18 +22,25 @@ use mpesa\MPESA_FACTORY;
 
 $mpesa = new MPESA_FACTORY();
 
+$BusinessShortCode = '174379';
+$LipaNaMpesaPasskey = 'bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919';
+
+$timestamp = $mpesa->GetTimeStamp(true);
+$password = base64_encode($BusinessShortCode . $LipaNaMpesaPasskey . $timestamp);
+
+
 $lipa_na_mpesa_post = array(
     //Fill in the request parameters with valid values
-    'BusinessShortCode' => '601373',
-    'Password' => base64_encode('373reset'),
-    'Timestamp' => $mpesa->GetTimeStamp(),
+    'BusinessShortCode' => $BusinessShortCode,
+    'Password' => $password,
+    'Timestamp' => $timestamp,
     'TransactionType' => 'CustomerPayBillOnline',
-    'Amount"' => '3000',
-    'PartyA' => '254713196504',
-    'PartyB' => '600000',
+    'Amount' => '3000',
+    'PartyA' => '254708374149',
+    'PartyB' => $BusinessShortCode,
     'PhoneNumber' => '254708374149',
     'CallBackURL' => 'https://41.89.65.170:81/mpesa/callback',
-    'AccountReference' => 'PAYH' . $mpesa->GetTimeStamp(),
+    'AccountReference' => 'PAY' . $timestamp,
     'TransactionDesc' => 'Test Payment'
 );
 
@@ -46,7 +54,7 @@ $c2b_post_data = array(
 );
 
 
-//$resp = $mpesa->LipaNaMpesaProcessRequest($token, $lipa_na_mpesa_post);
+$resp = $mpesa->LipaNaMpesaProcessRequest($lipa_na_mpesa_post);
 //$resp = $mpesa->ConsumerToBusinessSimulate($c2b_post_data);
-//var_dump($resp);
+var_dump($resp);
 
