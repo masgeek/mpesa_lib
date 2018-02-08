@@ -36,11 +36,11 @@ class MPESA_FACTORY
     function __construct()
     {
         //read the environment variables
-        $env = new Dotenv(dirname(__DIR__));
-        $data = $env->load();
+        $dotenv = new Dotenv(dirname(__DIR__));
+        //$dotenv->required(['consumer_key', 'consumer_secret', 'application_status']);
+        $dotenv->load();
         //set the consumer keys
         $this->APP_CONSUMER_KEY = getenv('consumer_key');
-        $this->APP_CONSUMER_SECRET = getenv('consumer_secret');
         $this->APP_CONSUMER_SECRET = getenv('consumer_secret');
         $this->APPLICATION_STATUS = getenv('application_status');
 
