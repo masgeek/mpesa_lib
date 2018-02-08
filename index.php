@@ -16,6 +16,7 @@
  */
 require_once 'config/config.php';
 require_once 'mpesa/MPESA_FACTORY.php';
+require_once 'mpesa/TRANSACTION_CALLBACKS.php';
 
 use mpesa\MPESA_FACTORY;
 
@@ -73,6 +74,6 @@ $lipa_na_mpesa_query_post = array(
 //$resp = $mpesa->LipaNaMpesaProcessRequest($lipa_na_mpesa_post);
 $resp = $mpesa->LipaNaMpesaRequest($lipa_na_mpesa_query_post);
 //$resp = $mpesa->ConsumerToBusinessSimulate($c2b_post_data);
-
-var_dump($resp);
+$decoded = \mpesa\TRANSACTION_CALLBACKS::processSTKPushQueryRequestCallback($resp);
+var_dump($decoded);
 
