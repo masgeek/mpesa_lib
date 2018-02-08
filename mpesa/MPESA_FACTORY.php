@@ -235,6 +235,7 @@ BusinessTransferFromMMFToUtility	Transferring funds from paybills MMF to another
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($curl, CURLOPT_POST, true);
         curl_setopt($curl, CURLOPT_POSTFIELDS, $payload);
+        curl_setopt($curl, CURLOPT_HEADER, false);
 
         $curl_response = curl_exec($curl);
 
