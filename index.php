@@ -39,7 +39,7 @@ $lipa_na_mpesa_post = array(
     'PartyA' => '254708374149',
     'PartyB' => $BusinessShortCode,
     'PhoneNumber' => '254708374149',
-    'CallBackURL' => 'https://41.89.65.170:81/mpesa/callback',
+    'CallBackURL' => 'http://tsobu.co.ke/mpesa/callback',
     'AccountReference' => 'PAY' . $timestamp,
     'TransactionDesc' => 'Test Payment'
 );
