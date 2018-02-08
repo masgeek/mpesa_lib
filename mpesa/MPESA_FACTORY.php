@@ -131,10 +131,16 @@ class MPESA_FACTORY
 
     /**
      * For Lipa Na M-Pesa online payment using STK Push.
+     * @param $body
      * @param string $endpoint
+     * @return mixed
+     * @throws \Httpful\Exception\ConnectionErrorException
      */
-    public function LipaNaMpesaRequest($endpoint = '/mpesa/stkpushquery/v1/query')
+    public function LipaNaMpesaRequest($body, $endpoint = '/mpesa/stkpushquery/v1/query')
     {
+        $uri = "{$this->BASE_URL}{$endpoint}";
+
+        return $this->ProcessRequest($body, $uri);
     }
 
     /**
