@@ -60,15 +60,17 @@ class MPESA_FACTORY
             ->strictSSL(false)
             ->send();
 
-        return $response->body->access_token;
+        return $response->body;//->access_token;
     }
 
     /**
      * Gives you time bound access token to call allowed APIs
      * @param string $endpoint
+     * @throws \Exception
      */
     public function OAuth($endpoint = '/oauth/v1/generate')
     {
+        throw new \Exception('Not implemented', '500');
     }
 
 
@@ -124,38 +126,18 @@ class MPESA_FACTORY
 
     /**
      * For Lipa Na M-Pesa online payment using STK Push.
+     * @param $token
+     * @param array $body
      * @param string $endpoint
+     * @return mixed
      */
-    public function LipaNaMpesaProcessRequest(array $body, $endpoint = '/mpesa/stkpush/v1/processrequest')
+    public function LipaNaMpesaProcessRequest($token, array $body, $endpoint = '/mpesa/stkpush/v1/processrequest')
     {
         $uri = "{$this->BASE_URL}{$endpoint}";
 
         $payload = json_encode($body); //convert array to json
 
-        /*
-        $response = Request::post($uri)// Build a PUT request...
-        ->sendsJson()
-        ->authenticateWith('username', 'password')
-        ->addHeaders(array(
-            'Authorization' => 'Bearer ' . $this->access_token,
-        ))
-            ->body($payload)
-            ->send();
-
-        return $response;*/
-        $curl = curl_init();
-        curl_setopt($curl, CURLOPT_URL, $uri);
-        curl_setopt($curl, CURLOPT_HTTPHEADER, array('Content-Type:application/json',"Authorization:Bearer 63Ns4zyD8JHr1UOHDclnHUyH80j4")); //setting custom header
-
-
-
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($curl, CURLOPT_POST, true);
-        curl_setopt($curl, CURLOPT_POSTFIELDS, $payload);
-
-        $curl_response = curl_exec($curl);
-
-        return  $curl_response;
+        return $this->ProcessRequest($payload, $uri, $token);
     }
 
     /**
@@ -169,10 +151,17 @@ class MPESA_FACTORY
 
     /**
      * Register URL for Validation/Confirmation and Simulate transaction
+     * @param $body
      * @param string $endpoint
+     * @return mixed
      */
-    public function ConsumerToBusinessSimulate($endpoint = '/mpesa/c2b/v1/simulate')
+    public function ConsumerToBusinessSimulate($body, $token, $endpoint = '/mpesa/c2b/v1/simulate')
     {
+        $uri = "{$this->BASE_URL}{$endpoint}";
+
+        $payload = json_encode($body); //convert array to json
+
+        return $this->ProcessRequest($payload, $uri, $token);
     }
 
 
@@ -204,5 +193,28 @@ BusinessTransferFromMMFToUtility	Transferring funds from paybills MMF to another
             4 => 'Shortcode'];
 
         return $identifier;
+    }
+
+    public function GetTimeStamp()
+    {
+        $date = new \DateTime();
+
+        return $date->getTimestamp();
+    }
+
+    protected function ProcessRequest($payload, $uri, $token)
+    {
+        $curl = curl_init();
+        curl_setopt($curl, CURLOPT_URL, $uri);
+        curl_setopt($curl, CURLOPT_HTTPHEADER, array('Content-Type:application/json', "Authorization:Bearer {$token}")); //setting custom header
+
+
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($curl, CURLOPT_POST, true);
+        curl_setopt($curl, CURLOPT_POSTFIELDS, $payload);
+
+        $curl_response = curl_exec($curl);
+
+        return $curl_response;
     }
 }
