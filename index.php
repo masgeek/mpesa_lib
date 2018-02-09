@@ -54,7 +54,7 @@ $c2b_post_data = array(
     'BillRefNumber' => '00000'
 );
 
-$checkoutRequestID = 'ws_CO_09022018144017528';
+$checkoutRequestID = 'ws_CO_08022018143137667';//'ws_CO_09022018144017528';
 
 $lipa_na_mpesa_query_post = array(
     'BusinessShortCode' => $BusinessShortCode,
