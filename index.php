@@ -54,7 +54,7 @@ $c2b_post_data = array(
     'BillRefNumber' => '00000'
 );
 
-$checkoutRequestID = 'ws_CO_08022018150403886';
+$checkoutRequestID = 'ws_CO_09022018144017528';
 
 $lipa_na_mpesa_query_post = array(
     'BusinessShortCode' => $BusinessShortCode,
@@ -71,9 +71,10 @@ $lipa_na_mpesa_query_post = array(
             "CustomerMessage":"Success. Request accepted for processing"
  */
 
-$resp = $mpesa->LipaNaMpesaProcessRequest($lipa_na_mpesa_post);
-//$resp = $mpesa->LipaNaMpesaRequest($lipa_na_mpesa_query_post);
+//$resp = $mpesa->LipaNaMpesaProcessRequest($lipa_na_mpesa_post);
+$resp = $mpesa->LipaNaMpesaRequest($lipa_na_mpesa_query_post);
 //$resp = $mpesa->ConsumerToBusinessSimulate($c2b_post_data);
-$decoded = \mpesa\TRANSACTION_CALLBACKS::processSTKPushQueryRequestCallback($resp);
-var_dump($decoded);
+///$decoded = \mpesa\TRANSACTION_CALLBACKS::processSTKPushQueryRequestCallback($resp);
+//var_dump($decoded);
+var_dump($resp);
 
