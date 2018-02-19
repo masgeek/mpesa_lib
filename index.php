@@ -1,4 +1,5 @@
 <?php
+
 /* @var $mpesa MPESA_FACTORY */
 /* @throws \Httpful\Exception\ConnectionErrorException */
 
@@ -40,7 +41,7 @@ $lipa_na_mpesa_post = array(
     'PartyA' => '254708374149',
     'PartyB' => $BusinessShortCode,
     'PhoneNumber' => '254713196504',
-    'CallBackURL' => 'http://tsobu.co.ke/mpesa/callback.php?title=stk_push&message=result&push_type=individual&regId=',
+    'CallBackURL' => 'http://41.89.93.136/mpesa/callback.php?title=stk_push&message=result&push_type=individual&regId=',
     'AccountReference' => 'PAY' . $timestamp,
     'TransactionDesc' => 'Test Payment'
 );
@@ -70,11 +71,14 @@ $lipa_na_mpesa_query_post = array(
             "ResponseDescription":"Success. Request accepted for processing",
             "CustomerMessage":"Success. Request accepted for processing"
  */
+//xdebug_var_dump($lipa_na_mpesa_post);
 
-//$resp = $mpesa->LipaNaMpesaProcessRequest($lipa_na_mpesa_post);
-$resp = $mpesa->LipaNaMpesaRequest($lipa_na_mpesa_query_post);
+
+$resp = $mpesa->LipaNaMpesaProcessRequest($lipa_na_mpesa_post);
+//$resp = $mpesa->LipaNaMpesaRequest($lipa_na_mpesa_query_post);
 //$resp = $mpesa->ConsumerToBusinessSimulate($c2b_post_data);
 ///$decoded = \mpesa\TRANSACTION_CALLBACKS::processSTKPushQueryRequestCallback($resp);
 //var_dump($decoded);
+echo '<pre>';
 var_dump($resp);
 
