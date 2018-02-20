@@ -1,6 +1,8 @@
 <?php
 $accessKey = 'f9fc9a33baba35bd8066da9d5c45fde1';
 $profileID = ' 066620B5-2B5D-49FD-88DC-C4CBA247122A';
+$amount = number_format(10, 2);
+$transactionRef = gmdate("YmdHis");
 ?>
 
 <!DOCTYPE html>
@@ -33,25 +35,25 @@ $profileID = ' 066620B5-2B5D-49FD-88DC-C4CBA247122A';
             <div id="paymentDetailsSection" class="section">
 
                 <div class="form-group">
-                    <label for="transaction_type">Ref Number</label>
-                    <input type="text" name="reference_number" class="form-control" value="sale">
-                </div>
-
-                <div class="form-group">
                     <label for="transaction_type">Transaction Type</label>
-                    <input type="text" name="transaction_type" class="form-control" "
-                    value="<?php echo gmdate("YmdHis"); ?>">
+                    <input type="text" readonly="readonly" name="transaction_type" class="form-control" value="sale">
+                </div>
+
+                <div class="form-group">
+                    <label for="reference_number">Reference Number</label>
+                    <input type="text" readonly="readonly" name="reference_number" class="form-control"
+                           value="<?= $transactionRef ?>">
                 </div>
 
 
                 <div class="form-group">
-                    <label for="transaction_type">Amount</label>
-                    <input type="text" name="amount" class="form-control" value="10.00">
+                    <label for="amount">Amount</label>
+                    <input type="text" name="amount" class="form-control" value="<?= $amount ?>">
                 </div>
 
                 <div class="form-group">
-                    <label for="transaction_type">Currency</label>
-                    <input type="text" name="currency" class="form-control" value="KES">
+                    <label for="currency">Currency</label>
+                    <input type="text" readonly="readonly" name="currency" class="form-control" value="KES">
                 </div>
         </fieldset>
         <div class="form-group">

@@ -34,7 +34,7 @@ function addLinkToSetDefaults() {
 
     newbutton = $(document.createElement("input"));
     newbutton.attr({
-        id:'defaultAll', value:'Default All', type:'button', onClick:'setDefaultsForAll()'
+        id:'defaultAll', value:'Default All', type:'button', onClick:'setDefaultsForAll()',class:'btn btn-danger btn-sm pull-right'
     });
     newbutton.bind('click', function() {
         setDefaultsForAll;
