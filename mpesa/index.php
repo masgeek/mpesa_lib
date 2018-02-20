@@ -80,7 +80,6 @@ $lipa_na_mpesa_query_post = array(
             "ResponseDescription":"Success. Request accepted for processing",
             "CustomerMessage":"Success. Request accepted for processing"
  */
-//xdebug_var_dump($lipa_na_mpesa_post);
 
 //$resp = $mpesa->GenerateToken();
 $resp = $mpesa->LipaNaMpesaProcessRequest($lipa_na_mpesa_post);
