@@ -62,6 +62,7 @@ class MPESA_FACTORY
      */
     public function GenerateToken($endpoint = '/oauth/v1/generate?grant_type=client_credentials')
     {
+        return  'dlQFvOnyfgIXlYKsInvvlQxCwCjz';
         $uri = "{$this->BASE_URL}{$endpoint}";
 
         $credentials = base64_encode("{$this->APP_CONSUMER_KEY}:{$this->APP_CONSUMER_SECRET}");
