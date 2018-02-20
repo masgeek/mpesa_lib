@@ -6,7 +6,7 @@ $profileID = ' 066620B5-2B5D-49FD-88DC-C4CBA247122A';
 <head>
     <title>Secure Acceptance - Payment Form Example</title>
     <link rel="stylesheet" type="text/css" href="payment.css"/>
-    <script type="text/javascript" src="../vendor/yarn-asset/jquery/dist/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../vendor/yarn-asset/font-awesome/css/font-awesome.css"/>
 </head>
 <body>
 <form id="payment_form" action="payment_confirmation.php" method="post">
@@ -28,7 +28,10 @@ $profileID = ' 066620B5-2B5D-49FD-88DC-C4CBA247122A';
             <span>currency:</span><input type="text" name="currency" value="KES" size="25"><br/>
         </div>
     </fieldset>
-    <input type="submit" id="submit" name="submit" value="Submit"/>
+    <input type="submit" id="submit" name="submit" value="Submit" class="btn btn-outline-primary btn-block btn-lg"/>
+
+
+    <script type="text/javascript" src="../vendor/yarn-asset/jquery/dist/jquery.min.js"></script>
     <script type="text/javascript" src="payment_form.js"></script>
 </form>
 </body>

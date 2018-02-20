@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,7 +28,7 @@
                         <i class="fa fa-mobile-phone fa-4x"></i>
                     </p>
                 </div>
-                <div class="card-footer"><a href="card/payment_form.php" class="btn btn-outline-success btn-block btn-lg">CARD</a>
+                <div class="card-footer"><a href="card/index.php" class="btn btn-outline-success btn-block btn-lg">MOBILE MONEY</a>
                 </div>
             </div>
         </div>
@@ -42,7 +44,7 @@
                         <i class="fa fa-cc-visa fa-4x"></i>
                     </p>
                 </div>
-                <div class="card-footer"><a href="card/payment_form.php" class="btn btn-outline-primary btn-block btn-lg">CARD</a>
+                <div class="card-footer"><a href="card/" class="btn btn-outline-primary btn-block btn-lg">CARD</a>
                 </div>
             </div>
         </div>

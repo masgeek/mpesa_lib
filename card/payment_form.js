@@ -50,7 +50,7 @@ function setDefaultsForPaymentDetailsSection() {
     $("input[name='transaction_type']").val("authorization");
     $("input[name='reference_number']").val(new Date().getTime());
     $("input[name='amount']").val("100.00");
-    $("input[name='currency']").val("USD");
+    $("input[name='currency']").val("KES");
 }
 
 function setDefaultsForUnsignedDetailsSection(){
