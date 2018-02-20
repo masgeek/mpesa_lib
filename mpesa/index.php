@@ -23,6 +23,7 @@ require_once 'MPESA_FACTORY.php';
 require_once 'TRANSACTION_CALLBACKS.php';
 
 echo '<pre>';
+
 use mpesa\MPESA_FACTORY;
 
 $regNumber = '219350';
@@ -47,7 +48,7 @@ $lipa_na_mpesa_post = array(
     'PartyB' => $BusinessShortCode,
     'PhoneNumber' => '254713196504',
     'CallBackURL' => "{$callbackURL}{$callbackParams}",
-    'AccountReference' => 'PAY' . $timestamp,
+    'AccountReference' => $regNumber,
     'TransactionDesc' => 'Test Payment'
 );
 
