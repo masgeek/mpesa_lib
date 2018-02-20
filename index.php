@@ -23,7 +23,7 @@ require_once 'config/config.php';
 require_once 'mpesa/MPESA_FACTORY.php';
 require_once 'mpesa/TRANSACTION_CALLBACKS.php';
 
-echo '<pre>';
+//echo '<pre>';
 use mpesa\MPESA_FACTORY;
 
 
@@ -85,7 +85,7 @@ $resp = $mpesa->LipaNaMpesaRequest($lipa_na_mpesa_query_post);
 ///$decoded = \mpesa\TRANSACTION_CALLBACKS::processSTKPushQueryRequestCallback($resp);
 //var_dump($decoded);
 
-$fp = file_put_contents( 'logs/'.date('Y_m_d_s').'response.log',$resp );
+$fp = file_put_contents( 'logs/'.date('Y_m_d_his-').'response.log',$resp );
 echo '<pre>';
 var_dump($resp);
 
