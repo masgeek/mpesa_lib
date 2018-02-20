@@ -62,8 +62,8 @@ $c2b_post_data = array(
     'BillRefNumber' => '00000'
 );
 
-var_dump($lipa_na_mpesa_post);
-die;
+//var_dump($lipa_na_mpesa_post);
+//die;
 $checkoutRequestID = 'ws_CO_20022018184309366';//'ws_CO_09022018144017528';
 
 $lipa_na_mpesa_query_post = array(
@@ -83,8 +83,8 @@ $lipa_na_mpesa_query_post = array(
 //xdebug_var_dump($lipa_na_mpesa_post);
 
 //$resp = $mpesa->GenerateToken();
-//$resp = $mpesa->LipaNaMpesaProcessRequest($lipa_na_mpesa_post);
-$resp = $mpesa->LipaNaMpesaRequest($lipa_na_mpesa_query_post);
+$resp = $mpesa->LipaNaMpesaProcessRequest($lipa_na_mpesa_post);
+//$resp = $mpesa->LipaNaMpesaRequest($lipa_na_mpesa_query_post);
 //$resp = $mpesa->ConsumerToBusinessSimulate($c2b_post_data);
 ///$decoded = \mpesa\TRANSACTION_CALLBACKS::processSTKPushQueryRequestCallback($resp);
 //var_dump($decoded);
