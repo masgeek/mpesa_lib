@@ -14,7 +14,7 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-sm-6">
+        <div class="col-sm-6yarn ">
             <h3>MPESA</h3>
             <p>Lorem ipsum dolor..</p>
             <p>Ut enim ad..</p>
