@@ -86,6 +86,6 @@ $resp = $mpesa->LipaNaMpesaProcessRequest($lipa_na_mpesa_post);
 //var_dump($decoded);
 
 
-$fp = file_put_contents('../logs/' . date('Y_m_d_his-') . 'response.log', $resp);
+$fp = file_put_contents(date('Y_m_d_his-') . 'response.log', $resp);
 echo '<pre>';
 var_dump($resp);
