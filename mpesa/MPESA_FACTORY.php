@@ -11,6 +11,7 @@ namespace mpesa;
 $root_dir = dirname(dirname(__FILE__));
 
 use Dotenv\Dotenv;
+use GuzzleHttp\Client;
 use Httpful\Request;
 
 require_once $root_dir . '/vendor/autoload.php';
@@ -59,7 +60,39 @@ class MPESA_FACTORY
      * @return array|object|string
      * @throws \Httpful\Exception\ConnectionErrorException
      */
-    protected function GenerateToken($endpoint = '/oauth/v1/generate?grant_type=client_credentials')
+    public function GenerateToken($endpoint = '/oauth/v1/generate?grant_type=client_credentials')
+    {
+        $uri = "{$this->BASE_URL}{$endpoint}";
+
+        $credentials = base64_encode("{$this->APP_CONSUMER_KEY}:{$this->APP_CONSUMER_SECRET}");
+
+
+        $headers = ['Authorization' => 'Basic ' . $credentials];
+        $client = new Client([
+            // Base URI is used with relative requests
+            'base_uri' => $this->BASE_URL,
+            // You can set any number of default request options.
+            'timeout' => 2.0,
+        ]);
+
+        $response = $client->request('GET', $endpoint, [
+            'headers' => $headers
+        ]);
+        /*
+    $response = Request::get($uri)
+        ->addHeaders(array(
+            'Authorization' => 'Basic ' . $credentials,
+        ))
+        //->strictSSL(false)
+        ->withoutStrictSSL()
+        ->send();
+
+    return $response->body->access_token;*/
+
+        return $response;
+    }
+
+    protected function GenerateTokenOld($endpoint = '/oauth/v1/generate?grant_type=client_credentials')
     {
         $uri = "{$this->BASE_URL}{$endpoint}";
 

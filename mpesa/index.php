@@ -1,7 +1,4 @@
 <?php
-
-phpinfo();
-die;
 /* @var $mpesa MPESA_FACTORY */
 /* @throws \Httpful\Exception\ConnectionErrorException */
 
@@ -81,8 +78,8 @@ $lipa_na_mpesa_query_post = array(
  */
 //xdebug_var_dump($lipa_na_mpesa_post);
 
-
-$resp = $mpesa->LipaNaMpesaProcessRequest($lipa_na_mpesa_post);
+$resp = $mpesa->GenerateToken();
+//$resp = $mpesa->LipaNaMpesaProcessRequest($lipa_na_mpesa_post);
 //$resp = $mpesa->LipaNaMpesaRequest($lipa_na_mpesa_query_post);
 //$resp = $mpesa->ConsumerToBusinessSimulate($c2b_post_data);
 ///$decoded = \mpesa\TRANSACTION_CALLBACKS::processSTKPushQueryRequestCallback($resp);
