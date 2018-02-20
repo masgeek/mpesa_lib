@@ -15,6 +15,10 @@
  * Lipa Na Mpesa Online PassKey:
  * bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919
  */
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 require_once 'config/config.php';
 require_once 'mpesa/MPESA_FACTORY.php';
 require_once 'mpesa/TRANSACTION_CALLBACKS.php';
