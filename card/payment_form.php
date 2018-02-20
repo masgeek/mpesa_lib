@@ -6,7 +6,7 @@ $profileID = ' 066620B5-2B5D-49FD-88DC-C4CBA247122A';
 <head>
     <title>Secure Acceptance - Payment Form Example</title>
     <link rel="stylesheet" type="text/css" href="payment.css"/>
-    <script type="text/javascript" src="../vendor/bower-asset/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="../vendor/yarn-asset/jquery/dist/jquery.min.js"></script>
 </head>
 <body>
 <form id="payment_form" action="payment_confirmation.php" method="post">

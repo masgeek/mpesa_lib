@@ -1,0 +1,13 @@
+{
+  "name": "mpesa",
+  "version": "1.0.0",
+  "main": "index.php",
+  "repository": "https://github.com/fatelord/mpesa_lib.git",
+  "author": "Masgeek <barsamms@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "bootstrap": "^4.0.0",
+    "jquery": "^3.3.1"
+  }
+}
