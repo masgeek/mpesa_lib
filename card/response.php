@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,6 +13,7 @@
     <div class="jumbotron text-center">
         <h1>Student FEES Payment</h1>
         <p>CARD PAYMENT</p>
+        <a href="../" class="btn btn-outline-dark btn-block btn-lg"><< RETURN</a>
     </div>
 </div>
 
