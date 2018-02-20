@@ -23,7 +23,7 @@ require_once '../config/config.php';
 require_once 'MPESA_FACTORY.php';
 require_once 'TRANSACTION_CALLBACKS.php';
 
-//echo '<pre>';
+echo '<pre>';
 use mpesa\MPESA_FACTORY;
 
 $regNumber = '219350';
