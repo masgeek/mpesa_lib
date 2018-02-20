@@ -34,7 +34,7 @@ $LipaNaMpesaPasskey = 'bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1
 $timestamp = $mpesa->GetTimeStamp(true);
 $password = base64_encode($BusinessShortCode . $LipaNaMpesaPasskey . $timestamp);
 
-$callbackURL = 'http://smis2.uonbi.ac.ke/mpesa/';
+$callbackURL = 'https://smis2.uonbi.ac.ke/mpesa/';
 $callbackParams = "callback.php";
 $lipa_na_mpesa_post = array(
     //Fill in the request parameters with valid values
@@ -60,7 +60,7 @@ $c2b_post_data = array(
     'BillRefNumber' => '00000'
 );
 
-$checkoutRequestID = 'ws_CO_20022018101601676';//'ws_CO_09022018144017528';
+$checkoutRequestID = 'ws_CO_20022018183414448';//'ws_CO_09022018144017528';
 
 $lipa_na_mpesa_query_post = array(
     'BusinessShortCode' => $BusinessShortCode,
@@ -79,8 +79,8 @@ $lipa_na_mpesa_query_post = array(
 //xdebug_var_dump($lipa_na_mpesa_post);
 
 //$resp = $mpesa->GenerateToken();
-$resp = $mpesa->LipaNaMpesaProcessRequest($lipa_na_mpesa_post);
-//$resp = $mpesa->LipaNaMpesaRequest($lipa_na_mpesa_query_post);
+//$resp = $mpesa->LipaNaMpesaProcessRequest($lipa_na_mpesa_post);
+$resp = $mpesa->LipaNaMpesaRequest($lipa_na_mpesa_query_post);
 //$resp = $mpesa->ConsumerToBusinessSimulate($c2b_post_data);
 ///$decoded = \mpesa\TRANSACTION_CALLBACKS::processSTKPushQueryRequestCallback($resp);
 //var_dump($decoded);
