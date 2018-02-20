@@ -8,24 +8,19 @@
 
 <body>
 <div class="jumbotron text-center">
-    <h1>My First Bootstrap Page</h1>
-    <p>Resize this responsive page to see the effect!</p>
+    <h1>Student FEES Payment</h1>
+    <p>Please select your payment method</p>
 </div>
 
 <div class="container">
     <div class="row">
-        <div class="col-sm-4">
-            <h3>Column 1</h3>
+        <div class="col-sm-6">
+            <h3>MPESA</h3>
             <p>Lorem ipsum dolor..</p>
             <p>Ut enim ad..</p>
         </div>
-        <div class="col-sm-4">
-            <h3>Column 2</h3>
-            <p>Lorem ipsum dolor..</p>
-            <p>Ut enim ad..</p>
-        </div>
-        <div class="col-sm-4">
-            <h3>Column 3</h3>
+        <div class="col-sm-6">
+            <h3>CARD PAYMENT</h3>
             <p>Lorem ipsum dolor..</p>
             <p>Ut enim ad..</p>
         </div>
