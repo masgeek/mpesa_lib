@@ -80,13 +80,13 @@ $lipa_na_mpesa_query_post = array(
 //xdebug_var_dump($lipa_na_mpesa_post);
 
 
-//$resp = $mpesa->LipaNaMpesaProcessRequest($lipa_na_mpesa_post);
-$resp = $mpesa->LipaNaMpesaRequest($lipa_na_mpesa_query_post);
+$resp = $mpesa->LipaNaMpesaProcessRequest($lipa_na_mpesa_post);
+//$resp = $mpesa->LipaNaMpesaRequest($lipa_na_mpesa_query_post);
 //$resp = $mpesa->ConsumerToBusinessSimulate($c2b_post_data);
 ///$decoded = \mpesa\TRANSACTION_CALLBACKS::processSTKPushQueryRequestCallback($resp);
 //var_dump($decoded);
 
 
-$fp = file_put_contents('logs/' . date('Y_m_d_his-') . 'response.log', $resp);
+$fp = file_put_contents('../logs/' . date('Y_m_d_his-') . 'response.log', $resp);
 echo '<pre>';
 var_dump($resp);
