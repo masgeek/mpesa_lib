@@ -47,7 +47,7 @@ class MPESA_FACTORY
         if ($this->APPLICATION_STATUS == 'live') {
             $this->BASE_URL = 'https://api.safaricom.co.ke';
         } else {
-            $this->BASE_URL = 'http://sandbox.safaricom.co.ke';
+            $this->BASE_URL = 'https://sandbox.safaricom.co.ke';
         }
         //var_dump($this->APPLICATION_STATUS);
         //var_dump($this->BASE_URL);
