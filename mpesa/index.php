@@ -1,5 +1,7 @@
 <?php
 
+phpinfo();
+die;
 /* @var $mpesa MPESA_FACTORY */
 /* @throws \Httpful\Exception\ConnectionErrorException */
 
