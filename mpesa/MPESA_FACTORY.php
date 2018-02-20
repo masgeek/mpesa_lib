@@ -73,7 +73,7 @@ class MPESA_FACTORY
             'base_uri' => $this->BASE_URL,
             // You can set any number of default request options.
             'timeout' => 2.0,
-            'verify' => false
+            //'verify' => false
         ]);
 
         $response = $client->request('GET', $endpoint, [
@@ -90,7 +90,13 @@ class MPESA_FACTORY
 
     return $response->body->access_token;*/
 
-        return $response;
+        $code = $response->getStatusCode(); // 200
+        $reason = $response->getReasonPhrase(); // OK
+
+        $bodyContent = $response->getBody()->getContents();
+        $content = json_decode($bodyContent);
+
+        return $content->access_token;
     }
 
     protected function GenerateTokenOld($endpoint = '/oauth/v1/generate?grant_type=client_credentials')
