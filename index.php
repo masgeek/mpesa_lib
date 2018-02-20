@@ -26,7 +26,7 @@ require_once 'mpesa/TRANSACTION_CALLBACKS.php';
 //echo '<pre>';
 use mpesa\MPESA_FACTORY;
 
-
+$regNumber = '219350';
 $mpesa = new MPESA_FACTORY();
 
 $BusinessShortCode = '174379';
@@ -35,7 +35,8 @@ $LipaNaMpesaPasskey = 'bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1
 $timestamp = $mpesa->GetTimeStamp(true);
 $password = base64_encode($BusinessShortCode . $LipaNaMpesaPasskey . $timestamp);
 
-
+$callbackURL = 'http://tsobu.co.ke/mpesa/';
+$callbackParams = "callback.php?title=stk_push&message=result&push_type=individual&regId={$regNumber}";
 $lipa_na_mpesa_post = array(
     //Fill in the request parameters with valid values
     'BusinessShortCode' => $BusinessShortCode,
@@ -46,7 +47,7 @@ $lipa_na_mpesa_post = array(
     'PartyA' => '254708374149',
     'PartyB' => $BusinessShortCode,
     'PhoneNumber' => '254713196504',
-    'CallBackURL' => 'http://41.89.93.136/mpesa/callback.php?title=stk_push&message=result&push_type=individual&regId=',
+    'CallBackURL' => "{$callbackURL}{$callbackParams}",
     'AccountReference' => 'PAY' . $timestamp,
     'TransactionDesc' => 'Test Payment'
 );
@@ -85,7 +86,7 @@ $resp = $mpesa->LipaNaMpesaRequest($lipa_na_mpesa_query_post);
 ///$decoded = \mpesa\TRANSACTION_CALLBACKS::processSTKPushQueryRequestCallback($resp);
 //var_dump($decoded);
 
-$fp = file_put_contents( 'logs/'.date('Y_m_d_his-').'response.log',$resp );
+$fp = file_put_contents('logs/' . date('Y_m_d_his-') . 'response.log', $resp);
 echo '<pre>';
 var_dump($resp);
 
