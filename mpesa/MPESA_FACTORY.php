@@ -12,7 +12,6 @@ $root_dir = dirname(dirname(__FILE__));
 
 use Dotenv\Dotenv;
 use Httpful\Request;
-use Medoo\Medoo;
 
 require_once $root_dir . '/vendor/autoload.php';
 
@@ -70,7 +69,8 @@ class MPESA_FACTORY
             ->addHeaders(array(
                 'Authorization' => 'Basic ' . $credentials,
             ))
-            ->strictSSL(false)
+            //->strictSSL(false)
+            ->withoutStrictSSL()
             ->send();
 
         return $response->body->access_token;
