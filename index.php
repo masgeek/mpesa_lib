@@ -23,6 +23,7 @@ require_once 'config/config.php';
 require_once 'mpesa/MPESA_FACTORY.php';
 require_once 'mpesa/TRANSACTION_CALLBACKS.php';
 
+echo '<pre>';
 use mpesa\MPESA_FACTORY;
 
 
