@@ -73,6 +73,7 @@ class MPESA_FACTORY
             'base_uri' => $this->BASE_URL,
             // You can set any number of default request options.
             'timeout' => 2.0,
+            'verify' => false
         ]);
 
         $response = $client->request('GET', $endpoint, [
