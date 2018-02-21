@@ -38,7 +38,7 @@ $transactionRef = gmdate("YHs");
                             <label for="phone">Paying Phone Number</label>
                             <input type="text" class="form-control" id="phone" name="phone" aria-describedby="phoneHelp"
                                    placeholder="Enter Phone number" required="required" value="254713196504">
-                            <small id="phoneHelp" class="form-text text-muted">Enter phone number you'll be paying form
+                            <small id="phoneHelp" class="form-text text-muted">Enter phone number you'll be paying from
                             </small>
                         </div>
 
