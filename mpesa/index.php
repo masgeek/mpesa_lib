@@ -69,7 +69,7 @@ $transactionRef = gmdate("YmdHis");
 
 <script type="application/javascript">
     jQuery(function ($) {
-        $("#phone").mask("0999999999", {placeholder: " "});
+        $("#phone").mask("254999999999", {placeholder: " "});
         $("#amount").mask("9?999999999", {placeholder: " "});
         //$("#refNumber").mask("a9?9/9999999", {placeholder: " "});
     });
