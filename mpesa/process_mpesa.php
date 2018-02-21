@@ -62,8 +62,6 @@ $lipa_na_mpesa_post = array(
 );
 
 
-var_dump($lipa_na_mpesa_post);
-die;
 $c2b_post_data = array(
     //Fill in the request parameters with valid values
     'ShortCode' => '601373',
