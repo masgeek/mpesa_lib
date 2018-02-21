@@ -1,94 +1,76 @@
 <?php
-/* @var $mpesa MPESA_FACTORY */
-/* @throws \Httpful\Exception\ConnectionErrorException */
+$transactionRef = gmdate("YmdHis");
+?>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Fees Payment MPEsa</title>
+    <link rel="stylesheet" type="text/css" href="../vendor/yarn-asset/bootstrap/dist/css/bootstrap.css"/>
+    <link rel="stylesheet" type="text/css" href="../vendor/yarn-asset/font-awesome/css/font-awesome.css"/>
+</head>
 
-/**
- *
- * Shortcode 1    601373
- * Initiator Name (Shortcode 1)    apitest373
- * Security Credential (Shortcode 1)    373reset
- * Shortcode 2    600000
- * Test MSISDN    254708374149
- * ExpiryDate    2018-02-11T11:22:45+03:00
- * Lipa Na Mpesa Online Shortcode:    174379
- * Lipa Na Mpesa Online PassKey:
- * bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919
- */
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+<body>
+<div class="jumbotron text-center">
+    <h1>MOBILE MONEY PAYMENTS</h1>
+    <p>Please select your payment method</p>
+</div>
 
-require_once '../config/config.php';
-require_once 'MPESA_FACTORY.php';
-require_once 'TRANSACTION_CALLBACKS.php';
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <!-- form -->
+            <form enctype="multipart/form-data" action="process_mpesa.php" method="post" name="mpesa-form">
+                <div class="card">
+                    <div class="card-header bg-success text-white">MOBILE MONEY PAYMENTS</div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label for="phone">Reference Number</label>
+                            <input type="text" class="form-control" id="refNumber" name="refNumber"
+                                   aria-describedby="refNumberHelp"
+                                   placeholder="Reference Number" required="required">
+                            <small id="refNumberHelp" class="form-text text-muted">Enter your reference number i.e
+                                Student Registration Number
+                            </small>
+                        </div>
 
-echo '<pre>';
+                        <div class="form-group">
+                            <label for="phone">Paying Phone Number</label>
+                            <input type="text" class="form-control" id="phone" name="phone" aria-describedby="phoneHelp"
+                                   placeholder="Enter Phone number" required="required">
+                            <small id="phoneHelp" class="form-text text-muted">Enter phone number you'll be paying form
+                            </small>
+                        </div>
 
-use mpesa\MPESA_FACTORY;
-
-$regNumber = '219350';
-$mpesa = new MPESA_FACTORY();
-
-$BusinessShortCode = '174379';
-$LipaNaMpesaPasskey = 'bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919';
-
-$timestamp = $mpesa->GetTimeStamp(true);
-$password = base64_encode($BusinessShortCode . $LipaNaMpesaPasskey . $timestamp);
-
-$callbackURL = 'https://smis2.uonbi.ac.ke/payment/mpesa/';
-$callbackParams = "callback.php";
-
-$lipa_na_mpesa_post = array(
-    //Fill in the request parameters with valid values
-    'BusinessShortCode' => $BusinessShortCode,
-    'Password' => $password,
-    'Timestamp' => $timestamp,
-    'TransactionType' => 'CustomerPayBillOnline',
-    'Amount' => '1',
-    'PartyA' => '254708374149',
-    'PartyB' => $BusinessShortCode,
-    'PhoneNumber' => '254713196504',
-    'CallBackURL' => "{$callbackURL}{$callbackParams}",
-    'AccountReference' => $regNumber,
-    'TransactionDesc' => 'Test Payment'
-);
-
-$c2b_post_data = array(
-    //Fill in the request parameters with valid values
-    'ShortCode' => '601373',
-    'CommandID' => 'CustomerPayBillOnline',
-    'Amount' => '1',
-    'Msisdn' => '254713196504',
-    'BillRefNumber' => '00000'
-);
-
-//var_dump($lipa_na_mpesa_post);
-//die;
-$checkoutRequestID = 'ws_CO_20022018184309366';//'ws_CO_09022018144017528';
-
-$lipa_na_mpesa_query_post = array(
-    'BusinessShortCode' => $BusinessShortCode,
-    'Password' => $password,
-    'Timestamp' => $timestamp,
-    'CheckoutRequestID' => $checkoutRequestID
-);
-
-/*
- *   "MerchantRequestID":"9681-281674-1",
-            "CheckoutRequestID":"ws_CO_08022018143137667",
-            "ResponseCode": "0",
-            "ResponseDescription":"Success. Request accepted for processing",
-            "CustomerMessage":"Success. Request accepted for processing"
- */
-
-//$resp = $mpesa->GenerateToken();
-$resp = $mpesa->LipaNaMpesaProcessRequest($lipa_na_mpesa_post);
-//$resp = $mpesa->LipaNaMpesaRequest($lipa_na_mpesa_query_post);
-//$resp = $mpesa->ConsumerToBusinessSimulate($c2b_post_data);
-///$decoded = \mpesa\TRANSACTION_CALLBACKS::processSTKPushQueryRequestCallback($resp);
-//var_dump($decoded);
+                        <div class="form-group">
+                            <label for="amount">Amount</label>
+                            <input type="text" class="form-control" id="amount" name="amount"
+                                   aria-describedby="amountHelp"
+                                   placeholder="Enter Amount" required="required">
+                            <small id="amountHelp" class="form-text text-muted">Enter amount you want to pay</small>
+                        </div>
 
 
-$fp = file_put_contents(date('Y_m_d_his-') . 'response.log', $resp);
-echo '<pre>';
-var_dump($resp);
+                    </div>
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-primary btn-block btn-lg">Proceed</button>
+                    </div>
+                </div>
+            </form>
+            <!-- form -->
+        </div>
+    </div>
+</div>
+</body>
+<script type="text/javascript" src="../vendor/yarn-asset/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="../vendor/yarn-asset/jquery.maskedinput/src/jquery.maskedinput.js"></script>
+<link rel="stylesheet" type="text/css" href="../vendor/yarn-asset/bootstrap/dist/js/bootstrap.js"/>
+
+<script type="application/javascript">
+    jQuery(function ($) {
+        $("#phone").mask("0999999999", {placeholder: " "});
+        $("#amount").mask("9?999999999", {placeholder: " "});
+        //$("#refNumber").mask("a9?9/9999999", {placeholder: " "});
+    });
+</script>
+</html
