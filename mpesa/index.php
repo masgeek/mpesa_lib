@@ -1,5 +1,5 @@
 <?php
-$transactionRef = gmdate("YmdHis");
+$transactionRef = gmdate("YHs");
 ?>
 <!DOCTYPE html>
 <html>
