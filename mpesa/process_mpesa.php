@@ -18,13 +18,14 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-require_once  '../vendor/autoload.php';
+require_once '../vendor/autoload.php';
 require_once '../config/config.php';
 require_once 'MPESA_FACTORY.php';
 require_once 'TRANSACTION_CALLBACKS.php';
 
 $whoops = new Whoops\Run();
-$whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
+$handler = new \Whoops\Handler\PrettyPageHandler;
+$whoops->pushHandler($handler);
 $whoops->register();
 
 $postObject = (object)$_POST;
@@ -34,13 +35,16 @@ $phone = isset($postObject->phone) ? $postObject->phone : null;
 $amount = isset($postObject->amount) ? $postObject->amount : 0;
 
 
-if ($regNumber != null || $phone == null || $amount == 0) {
-    throw new Exception('Invalid Payment parameters',501);
+if ($regNumber == null || $phone == null || $amount == 0) {
+    $handler->setPageTitle('Invalid Payment Parameters');
+
+    throw new Exception('Invalid Payment parameters', 501);
 
 }
 
 
 use mpesa\MPESA_FACTORY;
+
 $mpesa = new MPESA_FACTORY();
 
 $BusinessShortCode = '174379';
@@ -103,6 +107,6 @@ $resp = $mpesa->LipaNaMpesaProcessRequest($lipa_na_mpesa_post);
 //var_dump($decoded);
 
 
-$fp = file_put_contents('logs/'.date('Y_m_d_his-') . 'response.log', $resp);
+$fp = file_put_contents('logs/' . date('Y_m_d_his-') . 'response.log', $resp);
 echo '<pre>';
 var_dump($resp);
