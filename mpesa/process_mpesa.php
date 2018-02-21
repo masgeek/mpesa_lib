@@ -25,7 +25,7 @@ $postObject = (object)$_POST;
 $regNumber = isset($postObject->refNumber) ? $postObject->refNumber : null;
 $phone = isset($postObject->phone) ? $postObject->phone : null;
 $amount = isset($postObject->amount) ? $postObject->amount : 0;
-$desc = isset($postObject->desc) ? $postObject->desc : 'Fee Payment';
+$desc = isset($postObject->desc) ? $postObject->desc : 'Payment';
 $resp = [];
 
 if ($regNumber == null || $phone == null || $amount == 0) {
@@ -34,9 +34,6 @@ if ($regNumber == null || $phone == null || $amount == 0) {
     throw new Exception('Invalid Payment parameters', 501);
 
 }
-
-
-
 
 
 $BusinessShortCode = '174379';
@@ -60,7 +57,7 @@ $lipa_na_mpesa_post = array(
     'PhoneNumber' => $phone,
     'CallBackURL' => "{$callbackURL}{$callbackParams}",
     'AccountReference' => $regNumber,
-    'TransactionDesc' =>$desc,
+    'TransactionDesc' =>'Hello World',
     //'Remark' => 'TEst Payment'
 );
 
