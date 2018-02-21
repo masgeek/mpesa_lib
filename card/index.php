@@ -9,7 +9,7 @@ $transactionRef = gmdate("YmdHis");
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Fees Payment Demo</title>
+    <title>Fees Payment CARDS</title>
     <link rel="stylesheet" type="text/css" href="../vendor/yarn-asset/bootstrap/dist/css/bootstrap.css"/>
     <link rel="stylesheet" type="text/css" href="../vendor/yarn-asset/font-awesome/css/font-awesome.css"/>
 </head>
