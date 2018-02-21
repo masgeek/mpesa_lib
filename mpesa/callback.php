@@ -17,10 +17,20 @@ $data = [];
 $callbackJSONData = file_get_contents('php://input');
 
 
+// Tell log4php to use our configuration file.
+Logger::configure($root_dir . '/config/config.xml');
+
+$callbackParams = serialize($_POST);
+
+// Fetch a logger, it will inherit settings from the root logger
+$log = Logger::getLogger('myLogger');
+
+// Start logging
+$log->info(json_decode($callbackJSONData));
+
+
 if (strlen($callbackJSONData) > 2) {
     $data = \mpesa\TRANSACTION_CALLBACKS::processSTKPushRequestCallback($callbackJSONData, true);
-
-    file_put_contents('logs/' . date('Y_m_d_h-i-s-') . 'request_json.log', $callbackJSONData);
 }
 
 
