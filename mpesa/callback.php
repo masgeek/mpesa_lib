@@ -28,8 +28,6 @@ if (strlen($callbackJSONData) > 2) {
 }
 
 
-var_dump($data);
-die;
 $callback = new \helper\DATBASE_HELPER();
 
 $resp = $callback->WriteSTKToDatabase($data);
