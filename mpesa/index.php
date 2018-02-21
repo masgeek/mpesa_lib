@@ -29,7 +29,7 @@ $transactionRef = gmdate("YmdHis");
                             <label for="phone">Reference Number</label>
                             <input type="text" class="form-control" id="refNumber" name="refNumber"
                                    aria-describedby="refNumberHelp"
-                                   placeholder="Reference Number" required="required">
+                                   placeholder="Reference Number" required="required" value="<?= $transactionRef ?>">
                             <small id="refNumberHelp" class="form-text text-muted">Enter your reference number i.e
                                 Student Registration Number
                             </small>
@@ -38,7 +38,7 @@ $transactionRef = gmdate("YmdHis");
                         <div class="form-group">
                             <label for="phone">Paying Phone Number</label>
                             <input type="text" class="form-control" id="phone" name="phone" aria-describedby="phoneHelp"
-                                   placeholder="Enter Phone number" required="required">
+                                   placeholder="Enter Phone number" required="required" value="254713196504">
                             <small id="phoneHelp" class="form-text text-muted">Enter phone number you'll be paying form
                             </small>
                         </div>
@@ -47,7 +47,7 @@ $transactionRef = gmdate("YmdHis");
                             <label for="amount">Amount</label>
                             <input type="text" class="form-control" id="amount" name="amount"
                                    aria-describedby="amountHelp"
-                                   placeholder="Enter Amount" required="required">
+                                   placeholder="Enter Amount" required="required" value="1">
                             <small id="amountHelp" class="form-text text-muted">Enter amount you want to pay</small>
                         </div>
 
