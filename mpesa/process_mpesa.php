@@ -62,17 +62,6 @@ $lipa_na_mpesa_post = array(
 );
 
 
-$c2b_post_data = array(
-    //Fill in the request parameters with valid values
-    'ShortCode' => '601373',
-    'CommandID' => 'CustomerPayBillOnline',
-    'Amount' => '1',
-    'Msisdn' => '254713196504',
-    'BillRefNumber' => '00000'
-);
-
-//var_dump($lipa_na_mpesa_post);
-//die;
 $checkoutRequestID = 'ws_CO_21022018121436973';//'ws_CO_09022018144017528';
 
 $lipa_na_mpesa_query_post = array(
@@ -90,12 +79,8 @@ $lipa_na_mpesa_query_post = array(
             "CustomerMessage":"Success. Request accepted for processing"
  */
 
-//$resp = $mpesa->GenerateToken();
 $resp = $mpesa->LipaNaMpesaProcessRequest($lipa_na_mpesa_post);
 //$resp = $mpesa->LipaNaMpesaRequestQuery($lipa_na_mpesa_query_post);
-//$resp = $mpesa->ConsumerToBusinessSimulate($c2b_post_data);
-///$decoded = \mpesa\TRANSACTION_CALLBACKS::processSTKPushQueryRequestCallback($resp);
-//var_dump($decoded);
 
 
 //$fp = file_put_contents('logs/' . date('Y_m_d_his-') . 'response.log', $resp);

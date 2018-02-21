@@ -67,7 +67,7 @@ class MPESA_FACTORY
      * @return array|object|string
      * @throws \Httpful\Exception\ConnectionErrorException
      */
-    public function GenerateToken($endpoint = '/oauth/v1/generate?grant_type=client_credentials')
+    protected function GenerateToken($endpoint = '/oauth/v1/generate?grant_type=client_credentials')
     {
         $credentials = base64_encode("{$this->APP_CONSUMER_KEY}:{$this->APP_CONSUMER_SECRET}");
         $headers = ['Authorization' => 'Basic ' . $credentials];
