@@ -55,7 +55,7 @@ class MPESA_FACTORY
             // Base URI is used with relative requests
             'base_uri' => $this->BASE_URL,
             // You can set any number of default request options.
-            //'timeout' => 2.0,
+            'timeout' => 30, //timeout after 30 seconds
             //'verify' => false
         ]);
     }
