@@ -20,20 +20,33 @@ class TRANSACTION_CALLBACKS
      * Use this function to process the STK push request callback
      * @return string
      */
-    public static function processSTKPushRequestCallback()
+    public static function processSTKPushRequestCallback($callbackJSONData, $asArray = false)
     {
-        $callbackJSONData = file_get_contents('php://input');
-        $callbackData = json_decode($callbackJSONData);
+        $callbackData = json_decode($callbackJSONData)->Body;
+
+        $amount = 0;
+        $mpesaReceiptNumber = null;
+        $balance = 0;
+        $b2CUtilityAccountAvailableFunds = 0;
+        $transactionDate = null;
+        $phoneNumber = null;
+
+
         $resultCode = $callbackData->stkCallback->ResultCode;
         $resultDesc = $callbackData->stkCallback->ResultDesc;
         $merchantRequestID = $callbackData->stkCallback->MerchantRequestID;
         $checkoutRequestID = $callbackData->stkCallback->CheckoutRequestID;
-        $amount = $callbackData->stkCallback->CallbackMetadata->Item[0]->Value;
-        $mpesaReceiptNumber = $callbackData->stkCallback->CallbackMetadata->Item[1]->Value;
-        $balance = $callbackData->stkCallback->CallbackMetadata->Item[2]->Value;
-        $b2CUtilityAccountAvailableFunds = $callbackData->stkCallback->CallbackMetadata->Item[3]->Value;
-        $transactionDate = $callbackData->stkCallback->CallbackMetadata->Item[4]->Value;
-        $phoneNumber = $callbackData->stkCallback->CallbackMetadata->Item[5]->Value;
+
+
+        if ($resultCode == 0) {
+            $amount = $callbackData->stkCallback->CallbackMetadata->Item[0]->Value;
+            $mpesaReceiptNumber = $callbackData->stkCallback->CallbackMetadata->Item[1]->Value;
+            $balance = 0;//$callbackData->stkCallback->CallbackMetadata->Item[2]->Value;
+            $b2CUtilityAccountAvailableFunds = 0;//$callbackData->stkCallback->CallbackMetadata->Item[3]->Value;
+            $transactionDate = $callbackData->stkCallback->CallbackMetadata->Item[3]->Value;
+            $phoneNumber = $callbackData->stkCallback->CallbackMetadata->Item[4]->Value;
+        }
+
 
         $result = [
             "resultDesc" => $resultDesc,
@@ -48,7 +61,7 @@ class TRANSACTION_CALLBACKS
             "phoneNumber" => $phoneNumber
         ];
 
-        return json_encode($result);
+        return $asArray ? $result : json_encode($result);
     }
 
     /**
