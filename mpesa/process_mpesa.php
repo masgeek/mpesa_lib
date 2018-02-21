@@ -33,7 +33,7 @@ $postObject = (object)$_POST;
 $regNumber = isset($postObject->refNumber) ? $postObject->refNumber : null;
 $phone = isset($postObject->phone) ? $postObject->phone : null;
 $amount = isset($postObject->amount) ? $postObject->amount : 0;
-
+$resp = [];
 
 if ($regNumber == null || $phone == null || $amount == 0) {
     $handler->setPageTitle('Invalid Payment Parameters');
@@ -62,7 +62,7 @@ $lipa_na_mpesa_post = array(
     'Password' => $password,
     'Timestamp' => $timestamp,
     'TransactionType' => 'CustomerPayBillOnline',
-    'Amount' => '1',
+    'Amount' => $amount,
     'PartyA' => $phone,
     'PartyB' => $BusinessShortCode,
     'PhoneNumber' => $phone,
@@ -82,7 +82,7 @@ $c2b_post_data = array(
 
 //var_dump($lipa_na_mpesa_post);
 //die;
-$checkoutRequestID = 'ws_CO_21022018120523456';//'ws_CO_09022018144017528';
+$checkoutRequestID = 'ws_CO_21022018121436973';//'ws_CO_09022018144017528';
 
 $lipa_na_mpesa_query_post = array(
     'BusinessShortCode' => $BusinessShortCode,
@@ -101,7 +101,7 @@ $lipa_na_mpesa_query_post = array(
 
 //$resp = $mpesa->GenerateToken();
 $resp = $mpesa->LipaNaMpesaProcessRequest($lipa_na_mpesa_post);
-//$resp = $mpesa->LipaNaMpesaRequest($lipa_na_mpesa_query_post);
+//$resp = $mpesa->LipaNaMpesaRequestQuery($lipa_na_mpesa_query_post);
 //$resp = $mpesa->ConsumerToBusinessSimulate($c2b_post_data);
 ///$decoded = \mpesa\TRANSACTION_CALLBACKS::processSTKPushQueryRequestCallback($resp);
 //var_dump($decoded);

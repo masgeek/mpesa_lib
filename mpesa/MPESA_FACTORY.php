@@ -176,7 +176,7 @@ class MPESA_FACTORY
      * @return mixed
      * @throws \Httpful\Exception\ConnectionErrorException
      */
-    public function LipaNaMpesaRequest($body, $endpoint = '/mpesa/stkpushquery/v1/query')
+    public function LipaNaMpesaRequestQuery($body, $endpoint = '/mpesa/stkpushquery/v1/query')
     {
         $uri = "{$this->BASE_URL}{$endpoint}";
 
