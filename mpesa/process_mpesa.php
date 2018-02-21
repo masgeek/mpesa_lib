@@ -28,7 +28,7 @@ $amount = isset($postObject->amount) ? $postObject->amount : 0;
 $desc = isset($postObject->desc) ? $postObject->desc : 'Fee Payment';
 $resp = [];
 
-if ($regNumber != null || $phone == null || $amount == 0) {
+if ($regNumber == null || $phone == null || $amount == 0) {
     $handler->setPageTitle('Invalid Payment Parameters');
 
     throw new Exception('Invalid Payment parameters', 501);
