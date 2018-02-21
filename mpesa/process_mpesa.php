@@ -2,26 +2,18 @@
 /* @var $mpesa MPESA_FACTORY */
 /* @throws \Httpful\Exception\ConnectionErrorException */
 
-/**
- *
- * Shortcode 1    601373
- * Initiator Name (Shortcode 1)    apitest373
- * Security Credential (Shortcode 1)    373reset
- * Shortcode 2    600000
- * Test MSISDN    254708374149
- * ExpiryDate    2018-02-11T11:22:45+03:00
- * Lipa Na Mpesa Online Shortcode:    174379
- * Lipa Na Mpesa Online PassKey:
- * bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919
- */
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+//ini_set('display_errors', 1);
+//ini_set('display_startup_errors', 1);
+//error_reporting(E_ALL);
 
 require_once '../vendor/autoload.php';
 require_once '../config/config.php';
 require_once 'MPESA_FACTORY.php';
 require_once 'TRANSACTION_CALLBACKS.php';
+
+use mpesa\MPESA_FACTORY;
+$mpesa = new MPESA_FACTORY();
+
 
 $whoops = new Whoops\Run();
 $handler = new \Whoops\Handler\PrettyPageHandler;
@@ -33,9 +25,10 @@ $postObject = (object)$_POST;
 $regNumber = isset($postObject->refNumber) ? $postObject->refNumber : null;
 $phone = isset($postObject->phone) ? $postObject->phone : null;
 $amount = isset($postObject->amount) ? $postObject->amount : 0;
+$desc = isset($postObject->desc) ? $postObject->desc : 'Fee Payment';
 $resp = [];
 
-if ($regNumber == null || $phone == null || $amount == 0) {
+if ($regNumber != null || $phone == null || $amount == 0) {
     $handler->setPageTitle('Invalid Payment Parameters');
 
     throw new Exception('Invalid Payment parameters', 501);
@@ -43,9 +36,8 @@ if ($regNumber == null || $phone == null || $amount == 0) {
 }
 
 
-use mpesa\MPESA_FACTORY;
 
-$mpesa = new MPESA_FACTORY();
+
 
 $BusinessShortCode = '174379';
 $LipaNaMpesaPasskey = 'bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919';
@@ -68,7 +60,8 @@ $lipa_na_mpesa_post = array(
     'PhoneNumber' => $phone,
     'CallBackURL' => "{$callbackURL}{$callbackParams}",
     'AccountReference' => $regNumber,
-    'TransactionDesc' => 'Test Payment'
+    'TransactionDesc' =>$desc,
+    //'Remark' => 'TEst Payment'
 );
 
 $c2b_post_data = array(
