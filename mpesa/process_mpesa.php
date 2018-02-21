@@ -57,10 +57,13 @@ $lipa_na_mpesa_post = array(
     'PhoneNumber' => $phone,
     'CallBackURL' => "{$callbackURL}{$callbackParams}",
     'AccountReference' => $regNumber,
-    'TransactionDesc' =>'Hello World',
+    'TransactionDesc' =>$desc,
     //'Remark' => 'TEst Payment'
 );
 
+
+var_dump($lipa_na_mpesa_post);
+die;
 $c2b_post_data = array(
     //Fill in the request parameters with valid values
     'ShortCode' => '601373',
@@ -97,6 +100,6 @@ $resp = $mpesa->LipaNaMpesaProcessRequest($lipa_na_mpesa_post);
 //var_dump($decoded);
 
 
-$fp = file_put_contents('logs/' . date('Y_m_d_his-') . 'response.log', $resp);
-echo '<pre>';
+//$fp = file_put_contents('logs/' . date('Y_m_d_his-') . 'response.log', $resp);
+//echo '<pre>';
 var_dump($resp);
