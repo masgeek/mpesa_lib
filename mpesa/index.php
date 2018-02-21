@@ -20,6 +20,7 @@ $transactionRef = gmdate("YmdHis");
     <div class="row">
         <div class="col-sm-12">
             <!-- form -->
+            <a href="process_mpesa.php">TEST</a>
             <form enctype="multipart/form-data" action="process_mpesa.php" method="post" name="mpesa-form">
                 <div class="card">
                     <div class="card-header bg-success text-white">MOBILE MONEY PAYMENTS</div>

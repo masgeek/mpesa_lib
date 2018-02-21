@@ -63,9 +63,9 @@ $lipa_na_mpesa_post = array(
     'Timestamp' => $timestamp,
     'TransactionType' => 'CustomerPayBillOnline',
     'Amount' => '1',
-    'PartyA' => '254708374149',
+    'PartyA' => $phone,
     'PartyB' => $BusinessShortCode,
-    'PhoneNumber' => '254713196504',
+    'PhoneNumber' => $phone,
     'CallBackURL' => "{$callbackURL}{$callbackParams}",
     'AccountReference' => $regNumber,
     'TransactionDesc' => 'Test Payment'
@@ -82,7 +82,7 @@ $c2b_post_data = array(
 
 //var_dump($lipa_na_mpesa_post);
 //die;
-$checkoutRequestID = 'ws_CO_20022018184309366';//'ws_CO_09022018144017528';
+$checkoutRequestID = 'ws_CO_21022018120523456';//'ws_CO_09022018144017528';
 
 $lipa_na_mpesa_query_post = array(
     'BusinessShortCode' => $BusinessShortCode,
@@ -100,8 +100,8 @@ $lipa_na_mpesa_query_post = array(
  */
 
 //$resp = $mpesa->GenerateToken();
-$resp = $mpesa->LipaNaMpesaProcessRequest($lipa_na_mpesa_post);
-//$resp = $mpesa->LipaNaMpesaRequest($lipa_na_mpesa_query_post);
+//$resp = $mpesa->LipaNaMpesaProcessRequest($lipa_na_mpesa_post);
+$resp = $mpesa->LipaNaMpesaRequest($lipa_na_mpesa_query_post);
 //$resp = $mpesa->ConsumerToBusinessSimulate($c2b_post_data);
 ///$decoded = \mpesa\TRANSACTION_CALLBACKS::processSTKPushQueryRequestCallback($resp);
 //var_dump($decoded);
