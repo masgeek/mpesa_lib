@@ -24,12 +24,10 @@ JSON;
 if (strlen($callbackJSONData) > 2) {
     $data = \mpesa\TRANSACTION_CALLBACKS::processSTKPushRequestCallback($callbackJSONData, true);
 
-    file_put_contents('logs/' . date('Y_m_d_his-') . 'request_json.log', $data);
+    file_put_contents('logs/' . date('Y_m_d_h-i-s-') . 'request_json.log', $data);
 }
 
 
 $callback = new \helper\DATBASE_HELPER();
 
 $resp = $callback->WriteSTKToDatabase($data);
-
-var_dump($resp);
