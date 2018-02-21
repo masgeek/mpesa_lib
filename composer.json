@@ -15,6 +15,7 @@
         "safaricom/mpesa": "^1.0",
         "vlucas/phpdotenv": "^2.4",
         "guzzlehttp/guzzle": "^6.3",
-        "filp/whoops": "^2.1"
+        "filp/whoops": "^2.1",
+        "apache/log4php": "^2.3"
     }
 }
