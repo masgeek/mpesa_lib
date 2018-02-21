@@ -15,7 +15,7 @@ $root_dir = dirname(dirname(__FILE__));
 
 require_once $root_dir . '/vendor/autoload.php';
 
-class DATBASE_HELPER
+class DATABASE_HELPER
 {
     public $database;
 
