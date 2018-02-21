@@ -27,22 +27,20 @@ $whoops = new Whoops\Run();
 $whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
 $whoops->register();
 
-
 $postObject = (object)$_POST;
 
-$refNumber = isset($postObject->refNumber) ? $postObject->refNumber : null;
+$regNumber = isset($postObject->refNumber) ? $postObject->refNumber : null;
 $phone = isset($postObject->phone) ? $postObject->phone : null;
 $amount = isset($postObject->amount) ? $postObject->amount : 0;
 
 
-if ($refNumber != null || $phone == null || $amount == 0) {
-    throw new Exception('Invalid Payment parameters');
+if ($regNumber != null || $phone == null || $amount == 0) {
+    throw new Exception('Invalid Payment parameters',501);
+
 }
 
 
 use mpesa\MPESA_FACTORY;
-
-$regNumber = '219350';
 $mpesa = new MPESA_FACTORY();
 
 $BusinessShortCode = '174379';
@@ -105,6 +103,6 @@ $resp = $mpesa->LipaNaMpesaProcessRequest($lipa_na_mpesa_post);
 //var_dump($decoded);
 
 
-$fp = file_put_contents(date('Y_m_d_his-') . 'response.log', $resp);
+$fp = file_put_contents('logs/'.date('Y_m_d_his-') . 'response.log', $resp);
 echo '<pre>';
 var_dump($resp);
