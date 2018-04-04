@@ -6,8 +6,8 @@ $transactionRef = gmdate("YHs");
 <head>
     <meta charset="UTF-8">
     <title>Fees Payment MPEsa</title>
-    <link rel="stylesheet" type="text/css" href="../vendor/yarn-asset/bootstrap/dist/css/bootstrap.css"/>
-    <link rel="stylesheet" type="text/css" href="../vendor/yarn-asset/font-awesome/css/font-awesome.css"/>
+    <link rel="stylesheet" type="text/css" href="../vendor/bower-asset/bootstrap/dist/css/bootstrap.css"/>
+    <link rel="stylesheet" type="text/css" href="../vendor/bower-asset/font-awesome/css/font-awesome.css"/>
 </head>
 
 <body>
@@ -62,9 +62,9 @@ $transactionRef = gmdate("YHs");
     </div>
 </div>
 </body>
-<script type="text/javascript" src="../vendor/yarn-asset/jquery/dist/jquery.min.js"></script>
-<script type="text/javascript" src="../vendor/yarn-asset/jquery.maskedinput/src/jquery.maskedinput.js"></script>
-<link rel="stylesheet" type="text/css" href="../vendor/yarn-asset/bootstrap/dist/js/bootstrap.js"/>
+<script type="text/javascript" src="../vendor/bower-asset/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="../vendor/bower-asset/jquery.maskedinput/src/jquery.maskedinput.js"></script>
+<script type="text/javascript" src="../vendor/bower-asset/bootstrap/dist/js/bootstrap.js"></script>
 
 <script type="application/javascript">
     jQuery(function ($) {
