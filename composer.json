@@ -17,6 +17,7 @@
         "guzzlehttp/guzzle": "^6.3",
         "filp/whoops": "^2.1",
         "apache/log4php": "^2.3",
-        "adodb/adodb-php": "^5.20"
+        "adodb/adodb-php": "^5.20",
+        "symfony/var-dumper": "^3.4"
     }
 }
