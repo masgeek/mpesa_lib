@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "7ecb211a0bac97d5cd1911625438165c",
+    "content-hash": "6d5aef680a2f09ff85bf5312c7ec5398",
     "packages": [
         {
             "name": "adodb/adodb-php",
-            "version": "v5.20.9",
+            "version": "v5.20.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ADOdb/ADOdb.git",
-                "reference": "f601748cca1ccb86dfd427620a1692a70e681075"
+                "reference": "0e5243790c5a02a88b0dfe78c390fe795ad2d672"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ADOdb/ADOdb/zipball/f601748cca1ccb86dfd427620a1692a70e681075",
-                "reference": "f601748cca1ccb86dfd427620a1692a70e681075",
+                "url": "https://api.github.com/repos/ADOdb/ADOdb/zipball/0e5243790c5a02a88b0dfe78c390fe795ad2d672",
+                "reference": "0e5243790c5a02a88b0dfe78c390fe795ad2d672",
                 "shasum": ""
             },
             "require": {
@@ -32,7 +32,7 @@
             "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause",
-                "LGPL-2.1"
+                "LGPL-2.1-or-later"
             ],
             "authors": [
                 {
@@ -58,7 +58,7 @@
                 "library",
                 "php"
             ],
-            "time": "2016-12-21T17:19:42+00:00"
+            "time": "2018-03-30T17:31:04+00:00"
         },
         {
             "name": "apache/log4php",
@@ -92,16 +92,16 @@
         },
         {
             "name": "catfan/medoo",
-            "version": "v1.5.4",
+            "version": "v1.5.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/catfan/Medoo.git",
-                "reference": "a6b7b05b18fa7c8f955e259d491344b1db9a51bf"
+                "reference": "f77a93f72864e892c99d1033b8733e5da8fb0b3b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/catfan/Medoo/zipball/a6b7b05b18fa7c8f955e259d491344b1db9a51bf",
-                "reference": "a6b7b05b18fa7c8f955e259d491344b1db9a51bf",
+                "url": "https://api.github.com/repos/catfan/Medoo/zipball/f77a93f72864e892c99d1033b8733e5da8fb0b3b",
+                "reference": "f77a93f72864e892c99d1033b8733e5da8fb0b3b",
                 "shasum": ""
             },
             "require": {
@@ -147,7 +147,7 @@
                 "sql",
                 "sqlite"
             ],
-            "time": "2018-01-08T20:01:12+00:00"
+            "time": "2018-03-26T17:54:24+00:00"
         },
         {
             "name": "filp/whoops",
@@ -212,16 +212,16 @@
         },
         {
             "name": "guzzlehttp/guzzle",
-            "version": "6.3.0",
+            "version": "6.3.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/guzzle.git",
-                "reference": "f4db5a78a5ea468d4831de7f0bf9d9415e348699"
+                "reference": "68d0ea14d5a3f42a20e87632a5f84931e2709c90"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/f4db5a78a5ea468d4831de7f0bf9d9415e348699",
-                "reference": "f4db5a78a5ea468d4831de7f0bf9d9415e348699",
+                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/68d0ea14d5a3f42a20e87632a5f84931e2709c90",
+                "reference": "68d0ea14d5a3f42a20e87632a5f84931e2709c90",
                 "shasum": ""
             },
             "require": {
@@ -231,7 +231,7 @@
             },
             "require-dev": {
                 "ext-curl": "*",
-                "phpunit/phpunit": "^4.0 || ^5.0",
+                "phpunit/phpunit": "^4.8.35 || ^5.7 || ^6.4",
                 "psr/log": "^1.0"
             },
             "suggest": {
@@ -240,7 +240,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "6.2-dev"
+                    "dev-master": "6.3-dev"
                 }
             },
             "autoload": {
@@ -273,7 +273,7 @@
                 "rest",
                 "web service"
             ],
-            "time": "2017-06-22T18:50:49+00:00"
+            "time": "2018-03-26T16:33:04+00:00"
         },
         {
             "name": "guzzlehttp/promises",
@@ -540,16 +540,16 @@
         },
         {
             "name": "safaricom/mpesa",
-            "version": "1.0.4",
+            "version": "1.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/safaricom/mpesa-php-sdk.git",
-                "reference": "b333d9ecf64c314e649179f0ed768faf3e31caea"
+                "reference": "14c41910edecb653bd383bc94345899cceb93702"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/safaricom/mpesa-php-sdk/zipball/b333d9ecf64c314e649179f0ed768faf3e31caea",
-                "reference": "b333d9ecf64c314e649179f0ed768faf3e31caea",
+                "url": "https://api.github.com/repos/safaricom/mpesa-php-sdk/zipball/14c41910edecb653bd383bc94345899cceb93702",
+                "reference": "14c41910edecb653bd383bc94345899cceb93702",
                 "shasum": ""
             },
             "require": {
@@ -567,11 +567,140 @@
             ],
             "authors": [
                 {
-                    "email": "nandwa.moses@gmail.com"
+                    "name": "Moses Nandwa",
+                    "email": "mnandwa@safaricom.co.ke"
                 }
             ],
             "description": "A PHP package for Mpesa API",
-            "time": "2017-11-09T13:15:04+00:00"
+            "time": "2018-02-22T06:23:16+00:00"
+        },
+        {
+            "name": "symfony/polyfill-mbstring",
+            "version": "v1.7.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/polyfill-mbstring.git",
+                "reference": "78be803ce01e55d3491c1397cf1c64beb9c1b63b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/78be803ce01e55d3491c1397cf1c64beb9c1b63b",
+                "reference": "78be803ce01e55d3491c1397cf1c64beb9c1b63b",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "suggest": {
+                "ext-mbstring": "For best performance"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.7-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Polyfill\\Mbstring\\": ""
+                },
+                "files": [
+                    "bootstrap.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nicolas Grekas",
+                    "email": "p@tchwork.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony polyfill for the Mbstring extension",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "compatibility",
+                "mbstring",
+                "polyfill",
+                "portable",
+                "shim"
+            ],
+            "time": "2018-01-30T19:27:44+00:00"
+        },
+        {
+            "name": "symfony/var-dumper",
+            "version": "v3.4.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/var-dumper.git",
+                "reference": "6f502127b1bb85f7f30f8bc1fb60570a10431863"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/var-dumper/zipball/6f502127b1bb85f7f30f8bc1fb60570a10431863",
+                "reference": "6f502127b1bb85f7f30f8bc1fb60570a10431863",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^5.5.9|>=7.0.8",
+                "symfony/polyfill-mbstring": "~1.0"
+            },
+            "conflict": {
+                "phpunit/phpunit": "<4.8.35|<5.4.3,>=5.0"
+            },
+            "require-dev": {
+                "ext-iconv": "*",
+                "twig/twig": "~1.34|~2.4"
+            },
+            "suggest": {
+                "ext-iconv": "To convert non-UTF-8 strings to UTF-8 (or symfony/polyfill-iconv in case ext-iconv cannot be used).",
+                "ext-intl": "To show region name in time zone dump",
+                "ext-symfony_debug": ""
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.4-dev"
+                }
+            },
+            "autoload": {
+                "files": [
+                    "Resources/functions/dump.php"
+                ],
+                "psr-4": {
+                    "Symfony\\Component\\VarDumper\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nicolas Grekas",
+                    "email": "p@tchwork.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony mechanism for exploring and dumping PHP variables",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "debug",
+                "dump"
+            ],
+            "time": "2018-04-03T05:22:50+00:00"
         },
         {
             "name": "vlucas/phpdotenv",
