@@ -42,7 +42,7 @@ $LipaNaMpesaPasskey = 'bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1
 $timestamp = $mpesa->GetTimeStamp(true);
 $password = base64_encode($BusinessShortCode . $LipaNaMpesaPasskey . $timestamp);
 
-$callbackURL = 'https://smis2.uonbi.ac.ke/payment/mpesa/';
+$callbackURL = 'https://mpesa.tsobu.co.ke/mpesa/';
 $callbackParams = "callback.php";
 
 $lipa_na_mpesa_post = array(
