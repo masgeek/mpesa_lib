@@ -26,7 +26,8 @@
                         <i class="fa fa-mobile-phone fa-4x"></i>
                     </p>
                 </div>
-                <div class="card-footer"><a href="mpesa/" class="btn btn-outline-success btn-block btn-lg">MOBILE MONEY</a>
+                <div class="card-footer"><a href="mpesa/" class="btn btn-outline-success btn-block btn-lg">MOBILE
+                        MONEY</a>
                 </div>
             </div>
         </div>
@@ -42,13 +43,14 @@
                         <i class="fa fa-cc-visa fa-4x"></i>
                     </p>
                 </div>
-                <div class="card-footer"><a href="card/" class="btn btn-outline-primary btn-block btn-lg disabled">CARD</a>
+                <div class="card-footer"><a href="card/"
+                                            class="btn btn-outline-primary btn-block btn-lg disabled">CARD</a>
                 </div>
             </div>
         </div>
     </div>
 </div>
 </body>
-<script type="text/javascript" src="vendor/bower-asset/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript" src="vendor/bower-asset/jquery/dist/jquery.js"></script>
 <link rel="stylesheet" type="text/css" href="vendor/bower-asset/bootstrap/dist/js/bootstrap.js"/>
-</html
+</html>
