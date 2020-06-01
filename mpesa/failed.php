@@ -10,7 +10,7 @@
 $root_dir = dirname(dirname(__FILE__));
 
 require_once $root_dir . '/vendor/autoload.php';
-require_once 'TRANSACTION_CALLBACKS.php';
+require_once 'TransactionCallBacks.php';
 require_once $root_dir . '/helpers/DATABASE_HELPER.php';
 
 $data = [];
@@ -30,7 +30,7 @@ $log->info(json_decode($callbackJSONData));
 
 
 if (strlen($callbackJSONData) > 2) {
-    $data = \mpesa\TRANSACTION_CALLBACKS::processSTKPushRequestCallback($callbackJSONData, true);
+    $data = \mpesa\TransactionCallBacks::processSTKPushRequestCallback($callbackJSONData, true);
 }
 
 

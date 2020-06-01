@@ -19,8 +19,14 @@ $transactionRef = gmdate("YHs");
 <div class="container">
     <div class="row">
         <div class="col-sm-12">
+            <div id="ajax-response"></div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
             <!-- form -->
-            <form enctype="multipart/form-data" action="process_mpesa.php" method="post" name="mpesa-form">
+            <form enctype="multipart/form-data" action="process-mpesa.php" method="post" name="mpesa-form"
+                  id="mpesa-form">
                 <div class="card">
                     <div class="card-header bg-success text-white">MOBILE MONEY PAYMENTS</div>
                     <div class="card-body">
@@ -53,7 +59,9 @@ $transactionRef = gmdate("YHs");
 
                     </div>
                     <div class="card-footer">
-                        <button type="submit" class="btn btn-primary btn-block btn-lg">Proceed</button>
+                        <button type="button" class="btn btn-primary btn-block btn-lg" onclick="sendMpesaRequest()">
+                            Pay
+                        </button>
                     </div>
                 </div>
             </form>
@@ -65,8 +73,14 @@ $transactionRef = gmdate("YHs");
 <script type="text/javascript" src="../vendor/bower-asset/jquery/dist/jquery.min.js"></script>
 <script type="text/javascript" src="../vendor/bower-asset/jquery.maskedinput/src/jquery.maskedinput.js"></script>
 <script type="text/javascript" src="../vendor/bower-asset/bootstrap/dist/js/bootstrap.js"></script>
+<script type="text/javascript" src="js/ajaxCalls.js"></script>
 
 <script type="application/javascript">
+    jQuery(document).ready(function () {
+        jQuery('form').on('submit', function (e) {
+            e.preventDefault();
+        });
+    });
     jQuery(function ($) {
         $("#phone").mask("254999999999", {placeholder: " "});
         $("#amount").mask("9?999999999", {placeholder: " "});

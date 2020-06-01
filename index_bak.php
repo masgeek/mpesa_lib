@@ -1,6 +1,6 @@
 <?php
 
-/* @var $mpesa MPESA_FACTORY */
+/* @var $mpesa MpesaFactory */
 /* @throws \Httpful\Exception\ConnectionErrorException */
 
 /**
@@ -20,14 +20,14 @@ ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
 require_once 'config/config.php';
-require_once 'mpesa/MPESA_FACTORY.php';
-require_once 'mpesa/TRANSACTION_CALLBACKS.php';
+require_once 'mpesa/MpesaFactory.php';
+require_once 'mpesa/TransactionCallBacks.php';
 
 //echo '<pre>';
-use mpesa\MPESA_FACTORY;
+use mpesa\MpesaFactory;
 
 $regNumber = '219350';
-$mpesa = new MPESA_FACTORY();
+$mpesa = new MpesaFactory();
 
 $BusinessShortCode = '174379';
 $LipaNaMpesaPasskey = 'bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919';

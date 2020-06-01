@@ -14,7 +14,7 @@ namespace mpesa;
  * This class contains functions that will be used to obtain data from Mpesa callbacks
  * @package safaricom\Mpesa
  */
-class TRANSACTION_CALLBACKS
+class TransactionCallBacks
 {
     /**
      * Use this function to process the STK push request callback

@@ -19,6 +19,7 @@
         "apache/log4php": "^2.3",
         "adodb/adodb-php": "^5.20",
         "symfony/var-dumper": "^3.4",
-        "netresearch/jsonmapper": "^1.4"
+        "netresearch/jsonmapper": "^1.4",
+        "ext-json": "^7.4"
     }
 }

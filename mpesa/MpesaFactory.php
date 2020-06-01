@@ -12,11 +12,10 @@ $root_dir = dirname(dirname(__FILE__));
 
 use Dotenv\Dotenv;
 use GuzzleHttp\Client;
-use Httpful\Request;
 
 require_once $root_dir . '/vendor/autoload.php';
 
-class MPESA_FACTORY
+class MpesaFactory
 {
     /**
      * Base url for the API endpoints
@@ -97,11 +96,26 @@ class MPESA_FACTORY
     /**
      * For Lipa Na M-Pesa online payment using STK Push.
      * @param array $body
-     * @param string $endpoint
+     * @param string $endpoint https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest
      * @return mixed
+     * @throws \GuzzleHttp\Exception\GuzzleException
      * @throws \Httpful\Exception\ConnectionErrorException
      */
     public function LipaNaMpesaProcessRequest(array $body, $endpoint = '/mpesa/stkpush/v1/processrequest')
+    {
+
+        return $this->ProcessRequest($body, $endpoint);
+    }
+
+    /**
+     * For C2B Simulation
+     * @param array $body
+     * @param string $endpoint
+     * @return mixed
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws \Httpful\Exception\ConnectionErrorException
+     */
+    public function customerToBusiness(array $body, $endpoint = '/mpesa/c2b/v1/simulate')
     {
 
         return $this->ProcessRequest($body, $endpoint);
@@ -122,6 +136,7 @@ class MPESA_FACTORY
      * @param array $body
      * @param $uri
      * @return mixed
+     * @throws \GuzzleHttp\Exception\GuzzleException
      * @throws \Httpful\Exception\ConnectionErrorException
      */
     protected function ProcessRequest(array $body, $uri)
