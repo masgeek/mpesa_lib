@@ -12,6 +12,7 @@ $root_dir = dirname(dirname(__FILE__));
 
 use Dotenv\Dotenv;
 use GuzzleHttp\Client;
+use GuzzleHttp\Exception\ClientException;
 
 require_once $root_dir . '/vendor/autoload.php';
 
@@ -85,12 +86,13 @@ class MpesaFactory
      * @param $body
      * @param string $endpoint
      * @return mixed
+     * @throws \GuzzleHttp\Exception\GuzzleException
      * @throws \Httpful\Exception\ConnectionErrorException
      */
     public function LipaNaMpesaRequestQuery($body, $endpoint = '/mpesa/stkpushquery/v1/query')
     {
 
-        return $this->ProcessRequest($body, $endpoint);
+        return $this->processApiRequest($body, $endpoint);
     }
 
     /**
@@ -104,7 +106,7 @@ class MpesaFactory
     public function LipaNaMpesaProcessRequest(array $body, $endpoint = '/mpesa/stkpush/v1/processrequest')
     {
 
-        return $this->ProcessRequest($body, $endpoint);
+        return $this->processApiRequest($body, $endpoint);
     }
 
     /**
@@ -118,7 +120,19 @@ class MpesaFactory
     public function customerToBusiness(array $body, $endpoint = '/mpesa/c2b/v1/simulate')
     {
 
-        return $this->ProcessRequest($body, $endpoint);
+        return $this->processApiRequest($body, $endpoint);
+    }
+
+    /**
+     * @param array $body
+     * @param string $endpoint
+     * @return mixed
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws \Httpful\Exception\ConnectionErrorException
+     */
+    public function registerC2BUrls(array $body, $endpoint = '/mpesa/c2b/v1/registerurl')
+    {
+        return $this->processApiRequest($body, $endpoint);
     }
 
     /**
@@ -139,19 +153,24 @@ class MpesaFactory
      * @throws \GuzzleHttp\Exception\GuzzleException
      * @throws \Httpful\Exception\ConnectionErrorException
      */
-    protected function ProcessRequest(array $body, $uri)
+    protected function processApiRequest(array $body, $uri)
     {
-        $token = $this->GenerateToken();
+        try {
+            $token = $this->GenerateToken();
 
-        $response = $this->client->request('POST', $uri, [
-            'headers' => [
-                'Authorization' => "Bearer {$token}",
-                'Content-Type' => 'application/json'
-            ],
-            'body' => json_encode($body)
-        ]);
-        $bodyContent = $response->getBody()->getContents();
-        $content = json_decode($bodyContent);
+            $response = $this->client->request('POST', $uri, [
+                'headers' => [
+                    'Authorization' => "Bearer {$token}",
+                    'Content-Type' => 'application/json',
+                ],
+                'body' => json_encode($body)
+            ]);
+            $bodyContent = $response->getBody()->getContents();
+            $content = json_decode($bodyContent);
+        } catch (ClientException $exception) {
+            $bodyContent = $exception->getResponse()->getBody();
+            $content = json_decode($bodyContent);
+        }
 
         return $content;
     }
