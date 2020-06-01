@@ -2,7 +2,7 @@
 $transactionRef = gmdate("YHs");
 $c2bPhoneNumber = "254000000000";
 $realPhoneNumber = "254713196504";
-$testAmount = 5;
+$testAmount = 1;
 
 $callbackURL = 'https://webhook.site/ae877091-9700-40da-8016-b02114ab3d01';
 $validationURL = 'https://webhook.site/ae877091-9700-40da-8016-b02114ab3d01';

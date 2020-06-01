@@ -1,9 +1,10 @@
 "use strict";
 jQuery(document).ready(function () {
     jQuery(function ($) {
-        $("#phone").mask("254999999999", {placeholder: " "});
-        $("#amount").mask("9?999999999", {placeholder: " "});
-        //$("#refNumber").mask("a9?9/9999999", {placeholder: " "});
+        $("#c2bPhone").mask("254999999999", {placeholder: ""});
+        $("#stkPhone").mask("254999999999", {placeholder: ""});
+        $("#amount").mask("9?999999999", {placeholder: ""});
+        $("#refNumber").mask("9?99999999", {placeholder: ""});
     });
 
     jQuery('form').on('submit', function (e) {
