@@ -13,6 +13,8 @@ $root_dir = dirname(dirname(__FILE__));
 use Dotenv\Dotenv;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\ClientException;
+use GuzzleHttp\Exception\ConnectException;
+use GuzzleHttp\Exception\ServerException;
 
 require_once $root_dir . '/vendor/autoload.php';
 
@@ -55,7 +57,7 @@ class MpesaFactory
             // Base URI is used with relative requests
             'base_uri' => $this->BASE_URL,
             // You can set any number of default request options.
-            'timeout' => 60, //timeout after 30 seconds
+            'timeout' => 120, //timeout after 30 seconds
             //'verify' => false
         ]);
     }
@@ -168,6 +170,12 @@ class MpesaFactory
             $bodyContent = $response->getBody()->getContents();
             $content = json_decode($bodyContent);
         } catch (ClientException $exception) {
+            $bodyContent = $exception->getResponse()->getBody();
+            $content = json_decode($bodyContent);
+        } catch (ServerException $exception) {
+            $bodyContent = $exception->getResponse()->getBody();
+            $content = json_decode($bodyContent);
+        } catch (ConnectException $exception) {
             $bodyContent = $exception->getResponse()->getBody();
             $content = json_decode($bodyContent);
         }

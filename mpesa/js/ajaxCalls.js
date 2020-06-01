@@ -18,20 +18,20 @@ jQuery(document).ready(function () {
         sendMpesaSTKRequest();
     });
 
+    jQuery('#register-button').on('click', function (e) {
+        registerC2BUrl();
+    });
+
     function sendMpesaRequest() {
 
         const formData = jQuery('#mpesa-form').serialize();
-        const id = '#ajax-response';
-
         jQuery.ajax({
             type: 'POST',
             url: 'process-mpesa-c2b.php',
             dataType: "json",
             data: formData,
             success: function (data, textStatus, XMLHttpRequest) {
-                jQuery(id).html('');
-                jQuery(id).append(data.resp);
-                console.log(data);
+                processResponse(data);
             },
             error: function (XMLHttpRequest, textStatus, errorThrown) {
                 console.log(XMLHttpRequest);
@@ -42,7 +42,6 @@ jQuery(document).ready(function () {
 
     function sendMpesaSTKRequest() {
         const formData = jQuery('#mpesa-form').serialize();
-        const id = '#ajax-response';
 
         jQuery.ajax({
             type: 'POST',
@@ -50,14 +49,37 @@ jQuery(document).ready(function () {
             dataType: "json",
             data: formData,
             success: function (data, textStatus, XMLHttpRequest) {
-                jQuery(id).html('');
-                jQuery(id).append(data.resp);
-                console.log(data);
+                processResponse(data);
             },
             error: function (XMLHttpRequest, textStatus, errorThrown) {
                 console.log(XMLHttpRequest);
                 console.log(errorThrown);
             }
         });
+    }
+
+    function registerC2BUrl() {
+        const formData = jQuery('#mpesa-form').serialize();
+
+        jQuery.ajax({
+            type: 'POST',
+            url: 'register-c2b-url.php',
+            dataType: "json",
+            data: formData,
+            success: function (data, textStatus, XMLHttpRequest) {
+                processResponse(data);
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                console.log(XMLHttpRequest);
+                console.log(errorThrown);
+            }
+        });
+    }
+
+    function processResponse(data) {
+        const id = '#ajax-response';
+        jQuery(id).html('');
+        jQuery(id).append(data);
+        console.log(data);
     }
 });

@@ -23,21 +23,16 @@ $whoops->register();
 
 $postObject = (object)$_POST;
 
-$regNumber = isset($postObject->refNumber) ? $postObject->refNumber : null;
-$customerPhoneNumber = isset($postObject->c2bPhone) ? $postObject->c2bPhone : null;
-$transactionType = isset($postObject->transactionType) ? $postObject->transactionType : null;
-$businessShortCode = isset($postObject->businessShortCode) ? $postObject->businessShortCode : null;
 
-$amount = isset($postObject->amount) ? $postObject->amount : 0;
-$desc = isset($postObject->desc) ? $postObject->desc : 'Payment';
+$businessShortCode = isset($postObject->businessShortCode) ? $postObject->businessShortCode : null;
 $responseType = isset($postObject->responseType) ? $postObject->responseType : 'Completed';
 
 $callbackURL = isset($postObject->callbackURL) ? $postObject->callbackURL : null;
 $validationURL = isset($postObject->validationURL) ? $postObject->validationURL : null;
 $confirmationURL = isset($postObject->confirmationURL) ? $postObject->confirmationURL : null;
-$resp = [];
 
-if ($regNumber == null || $customerPhoneNumber == null || $amount == 0 || $transactionType == null) {
+
+if ($responseType == null) {
     throw new Exception('Invalid Payment parameters', 501);
 } else {
 
@@ -54,17 +49,7 @@ if ($regNumber == null || $customerPhoneNumber == null || $amount == 0 || $trans
         "ValidationURL" => $validationURL
     ];
 
-    $c2bRequest = [
-        "ShortCode" => $businessShortCode,
-        "CommandID" => $transactionType,
-        "Amount" => $amount,
-        "Msisdn" => $customerPhoneNumber,
-        "BillRefNumber" => $timestamp
-    ];
-
-
-//    $resp = $mpesa->registerC2BUrls($c2bUrlRegBody);
-    $resp = $mpesa->customerToBusiness($c2bRequest);
+    $resp = $mpesa->registerC2BUrls($c2bUrlRegBody);
 }
 
 $fp = file_put_contents('logs/' . date('Ymdhis-') . 'response.log', $resp);

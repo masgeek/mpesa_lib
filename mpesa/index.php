@@ -1,11 +1,12 @@
 <?php
 $transactionRef = gmdate("YHs");
-$testPhone = "254000000000";
+$c2bPhoneNumber = "254000000000";
+$realPhoneNumber = "254713196504";
 $testAmount = 5;
 
-$callbackURL = 'https://b5b222540e96.ngrok.io/callback.php';
-$validationURL = 'https://b5b222540e96.ngrok.io/validation.php';
-$confirmationURL = 'https://b5b222540e96.ngrok.io/confirmation.php';
+$callbackURL = 'https://webhook.site/ae877091-9700-40da-8016-b02114ab3d01';
+$validationURL = 'https://webhook.site/ae877091-9700-40da-8016-b02114ab3d01';
+$confirmationURL = 'https://webhook.site/ae877091-9700-40da-8016-b02114ab3d01';
 ?>
 <!DOCTYPE html>
 <html>
@@ -43,6 +44,7 @@ $confirmationURL = 'https://b5b222540e96.ngrok.io/confirmation.php';
                             <select class="form-control" name="businessShortCode" id="businessShortCode">
                                 <option value="174379">174379</option>
                                 <option value="601426">601426</option>
+                                <option value="600256">600256</option>
                             </select>
                         </div>
 
@@ -64,12 +66,33 @@ $confirmationURL = 'https://b5b222540e96.ngrok.io/confirmation.php';
                             </small>
                         </div>
 
-                        <div class="form-group">
-                            <label for="phone">Paying Phone Number</label>
-                            <input type="text" class="form-control" id="phone" name="phone" aria-describedby="phoneHelp"
-                                   placeholder="Enter Phone number" required="required" value="<?= $testPhone ?>">
-                            <small id="phoneHelp" class="form-text text-muted">Enter phone number you'll be paying from
-                            </small>
+                        <div class="row">
+
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="stkPhone">STK Paying Phone Number</label>
+                                    <input type="text" class="form-control" id="stkPhone" name="stkPhone"
+                                           aria-describedby="stkPhone"
+                                           placeholder="Enter Phone number" required="required"
+                                           value="<?= $realPhoneNumber ?>">
+                                    <small id="phoneHelp" class="form-text text-muted">Enter phone number you'll be
+                                        paying
+                                        from using STK
+                                    </small>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label for="c2bPhone">C2B Paying Phone Number</label>
+                                    <input type="text" class="form-control" id="c2bPhone" name="c2bPhone"
+                                           aria-describedby="c2bPhone"
+                                           placeholder="Enter Phone number" required="required"
+                                           value="<?= $c2bPhoneNumber ?>">
+                                    <small id="phoneHelp" class="form-text text-muted">Enter phone number you'll be
+                                        paying from using C2B
+                                    </small>
+                                </div>
+                            </div>
                         </div>
 
                         <div class="form-group">
@@ -88,25 +111,30 @@ $confirmationURL = 'https://b5b222540e96.ngrok.io/confirmation.php';
                         </div>
 
                         <div class="form-group">
-                            <label for="confirmationURL">Validation URL</label>
+                            <label for="confirmationURL">Confirmation URL</label>
                             <input type="text" class="form-control" id="confirmationURL" name="confirmationURL"
                                    aria-describedby="confirmationURL" value="<?= $confirmationURL ?>">
                         </div>
 
                         <div class="form-group">
-                            <label for="validationURL">Confirmation URL</label>
+                            <label for="validationURL">Validation URL</label>
                             <input type="text" class="form-control" id="validationURL" name="validationURL"
                                    aria-describedby="validationURL" value="<?= $validationURL ?>">
                         </div>
                     </div>
                     <div class="card-footer">
                         <div class="row">
-                            <div class="col-sm-6">
+                            <div class="col-sm-4">
+                                <button type="button" class="btn btn-outline-danger btn-block btn-lg" id="register-button">
+                                    Register URL
+                                </button>
+                            </div>
+                            <div class="col-sm-4">
                                 <button type="button" class="btn btn-primary btn-block btn-lg" id="c2b-button">
                                     C2B Simulation
                                 </button>
                             </div>
-                            <div class="col-sm-6">
+                            <div class="col-sm-4">
                                 <button type="button" class="btn btn-success btn-block btn-lg" id="stk-button">
                                     STK
                                 </button>

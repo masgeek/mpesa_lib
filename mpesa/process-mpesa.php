@@ -24,11 +24,11 @@ $whoops->register();
 $postObject = (object)$_POST;
 
 $regNumber = isset($postObject->refNumber) ? $postObject->refNumber : null;
-$customerPhoneNumber = isset($postObject->phone) ? $postObject->phone : null;
+$customerPhoneNumber = isset($postObject->stkPhone) ? $postObject->stkPhone : null;
 $transactionType = isset($postObject->transactionType) ? $postObject->transactionType : null;
 $businessShortCode = isset($postObject->businessShortCode) ? $postObject->businessShortCode : null;
 $amount = isset($postObject->amount) ? $postObject->amount : 0;
-$desc = isset($postObject->desc) ? $postObject->desc : 'Payment';
+$desc = isset($postObject->desc) ? $postObject->desc : 'STK Payment';
 
 $callbackURL = isset($postObject->callbackURL) ? $postObject->callbackURL : null;
 $validationURL = isset($postObject->validationURL) ? $postObject->validationURL : null;
@@ -36,7 +36,6 @@ $confirmationURL = isset($postObject->confirmationURL) ? $postObject->confirmati
 $resp = [];
 
 if ($regNumber == null || $customerPhoneNumber == null || $amount == 0 || $transactionType == null) {
-    $handler->setPageTitle('Invalid Payment Parameters');
     throw new Exception('Invalid Payment parameters', 501);
 } else {
 
@@ -45,7 +44,7 @@ if ($regNumber == null || $customerPhoneNumber == null || $amount == 0 || $trans
 
     $timestamp = $mpesa->GetTimeStamp(true);
     $password = base64_encode($businessShortCode . $LipaNaMpesaPasskey . $timestamp);
-    
+
     $lipaNaMpesaPost = array(
         //Fill in the request parameters with valid values
         'BusinessShortCode' => $businessShortCode,

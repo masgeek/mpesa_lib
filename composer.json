@@ -1,25 +1,30 @@
 {
-    "name": "fatelord/mpesa_library",
-    "description": "Simplified mpesa library for usage in PHP applications",
-    "type": "project",
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "Sammy Barasa",
-            "email": "barsamms@gmail.com"
-        }
-    ],
-    "require": {
-        "nategood/httpful": "*",
-        "catfan/medoo":"*",
-        "safaricom/mpesa": "^1.0",
-        "vlucas/phpdotenv": "^2.4",
-        "guzzlehttp/guzzle": "^6.3",
-        "filp/whoops": "^2.1",
-        "apache/log4php": "^2.3",
-        "adodb/adodb-php": "^5.20",
-        "symfony/var-dumper": "^3.4",
-        "netresearch/jsonmapper": "^1.4",
-        "ext-json": "^7.4"
+  "name": "fatelord/mpesa_library",
+  "description": "Simplified mpesa library for usage in PHP applications",
+  "type": "project",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Sammy Barasa",
+      "email": "barsamms@gmail.com"
     }
+  ],
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "require": {
+    "nategood/httpful": "*",
+    "catfan/medoo": "*",
+    "safaricom/mpesa": "^1.0",
+    "vlucas/phpdotenv": "^2.4",
+    "guzzlehttp/guzzle": "^6.3",
+    "filp/whoops": "^2.1",
+    "apache/log4php": "^2.3",
+    "adodb/adodb-php": "^5.20",
+    "symfony/var-dumper": "^3.4",
+    "netresearch/jsonmapper": "^1.4",
+    "edwinmugendi/sapamapay": "dev-master"
+  },
+  "require-dev": {
+    "ext-json": "^7.4"
+  }
 }
