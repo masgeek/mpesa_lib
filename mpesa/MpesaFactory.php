@@ -27,9 +27,9 @@ class MpesaFactory
     protected $BASE_URL;
 
     //public $access_token;
-    protected $APP_CONSUMER_KEY;
-    protected $APP_CONSUMER_SECRET;
-    protected $APPLICATION_STATUS;
+    protected $MPESA_CONSUMER_KEY;
+    protected $MPESA_CONSUMER_SECRET;
+    protected $MPESA_ENV;
     protected $client;
     protected $database;
 
@@ -40,14 +40,14 @@ class MpesaFactory
     {
         //read the environment variables
         $dotenv = new Dotenv(dirname(__DIR__));
-        //$dotenv->required(['consumer_key', 'consumer_secret', 'application_status']);
+//        $dotenv->required(['consumer_key', 'consumer_secret', 'application_status']);
         $dotenv->load();
-        //set the consumer keys
-        $this->APP_CONSUMER_KEY = getenv('consumer_key');
-        $this->APP_CONSUMER_SECRET = getenv('consumer_secret');
-        $this->APPLICATION_STATUS = getenv('application_status');
 
-        if ($this->APPLICATION_STATUS == 'live') {
+        $this->MPESA_CONSUMER_KEY = getenv('MPESA_CONSUMER_KEY');
+        $this->MPESA_CONSUMER_SECRET = getenv('MPESA_CONSUMER_SECRET');
+        $this->MPESA_ENV = getenv('MPESA_ENV');
+
+        if ($this->MPESA_ENV == 'live') {
             $this->BASE_URL = 'https://api.safaricom.co.ke';
         } else {
             $this->BASE_URL = 'https://sandbox.safaricom.co.ke';
@@ -71,7 +71,7 @@ class MpesaFactory
      */
     protected function GenerateToken($endpoint = '/oauth/v1/generate?grant_type=client_credentials')
     {
-        $credentials = base64_encode("{$this->APP_CONSUMER_KEY}:{$this->APP_CONSUMER_SECRET}");
+        $credentials = base64_encode("{$this->MPESA_CONSUMER_KEY}:{$this->MPESA_CONSUMER_SECRET}");
         $headers = ['Authorization' => 'Basic ' . $credentials];
         $response = $this->client->request('GET', $endpoint, [
             'headers' => $headers

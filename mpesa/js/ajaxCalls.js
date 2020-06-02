@@ -29,6 +29,7 @@ jQuery(document).ready(function () {
         jQuery.ajax({
             type: 'POST',
             url: 'process-mpesa-c2b.php',
+            // url: 'process-mpesa-test.php',
             dataType: "json",
             data: formData,
             success: function (data, textStatus, XMLHttpRequest) {

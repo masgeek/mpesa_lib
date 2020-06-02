@@ -23,7 +23,7 @@ $whoops->register();
 
 $postObject = (object)$_POST;
 
-$regNumber = isset($postObject->refNumber) ? $postObject->refNumber : null;
+$refNumber = isset($postObject->refNumber) ? $postObject->refNumber : null;
 $customerPhoneNumber = isset($postObject->stkPhone) ? $postObject->stkPhone : null;
 $transactionType = isset($postObject->transactionType) ? $postObject->transactionType : null;
 $businessShortCode = isset($postObject->businessShortCode) ? $postObject->businessShortCode : null;
@@ -35,7 +35,7 @@ $validationURL = isset($postObject->validationURL) ? $postObject->validationURL 
 $confirmationURL = isset($postObject->confirmationURL) ? $postObject->confirmationURL : null;
 $resp = [];
 
-if ($regNumber == null || $customerPhoneNumber == null || $amount == 0 || $transactionType == null) {
+if ($refNumber == null || $customerPhoneNumber == null || $amount == 0 || $transactionType == null) {
     throw new Exception('Invalid Payment parameters', 501);
 } else {
 
@@ -56,7 +56,7 @@ if ($regNumber == null || $customerPhoneNumber == null || $amount == 0 || $trans
         'PartyB' => $businessShortCode,
         'PhoneNumber' => $customerPhoneNumber,
         'CallBackURL' => "{$callbackURL}{$callbackParams}",
-        'AccountReference' => $regNumber,
+        'AccountReference' => $refNumber,
         'TransactionDesc' => $desc
     );
 

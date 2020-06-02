@@ -1,6 +1,6 @@
 <?php
 $transactionRef = gmdate("YHs");
-$c2bPhoneNumber = "254000000000";
+$c2bPhoneNumber = "254708374149";
 $realPhoneNumber = "254713196504";
 $testAmount = 1;
 
@@ -43,6 +43,10 @@ $confirmationURL = 'https://webhook.site/ae877091-9700-40da-8016-b02114ab3d01';
                             <label for="transaction-type">Choose shortcode:</label>
                             <select class="form-control" name="businessShortCode" id="businessShortCode">
                                 <option value="174379">174379</option>
+                                <option value="600344" selected>600344</option>
+                                <option value="600000">600000</option>
+                                <option value="600610">600610</option>
+                                <option value="600147">600147</option>
                                 <option value="601426">601426</option>
                                 <option value="600256">600256</option>
                             </select>
@@ -51,8 +55,8 @@ $confirmationURL = 'https://webhook.site/ae877091-9700-40da-8016-b02114ab3d01';
                         <div class="form-group">
                             <label for="transaction-type">Choose transaction type:</label>
                             <select class="form-control" name="transactionType" id="transactionType">
-                                <option value="CustomerPayBillOnline">PayBill</option>
-                                <option value="CustomerBuyGoodsOnline">Till Number</option>
+                                <option value="CustomerPayBillOnline">CustomerPayBillOnline</option>
+                                <option value="CustomerBuyGoodsOnline">CustomerBuyGoodsOnline</option>
                             </select>
                         </div>
 
@@ -125,7 +129,8 @@ $confirmationURL = 'https://webhook.site/ae877091-9700-40da-8016-b02114ab3d01';
                     <div class="card-footer">
                         <div class="row">
                             <div class="col-sm-4">
-                                <button type="button" class="btn btn-outline-danger btn-block btn-lg" id="register-button">
+                                <button type="button" class="btn btn-outline-danger btn-block btn-lg"
+                                        id="register-button">
                                     Register URL
                                 </button>
                             </div>

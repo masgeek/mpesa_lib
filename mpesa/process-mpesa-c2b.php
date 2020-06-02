@@ -59,7 +59,7 @@ if ($regNumber == null || $customerPhoneNumber == null || $amount == 0 || $trans
         "CommandID" => $transactionType,
         "Amount" => $amount,
         "Msisdn" => $customerPhoneNumber,
-        "BillRefNumber" => $timestamp
+        "BillRefNumber" => "account"
     ];
 
 
