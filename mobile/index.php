@@ -5,9 +5,10 @@ $realPhoneNumber = "254713196504";
 $testAmount = 1;
 
 //$callbackURL = 'https://webhook.site/ae877091-9700-40da-8016-b02114ab3d01';
-$callbackURL = 'https://b73b26ec3dd0.ngrok.io/mpesa/callback.php';
-$confirmationURL = 'https://b73b26ec3dd0.ngrok.io/mpesa/confirmation.php';
-$validationURL = 'https://b73b26ec3dd0.ngrok.io/mpesa/validation.php';
+$baseUrl = "http://stockpos.adotpdemo.co.ke/checkout/trans/";
+$callbackURL = "{$baseUrl}callback.php";
+$confirmationURL = "{$baseUrl}confirmation.php";
+$validationURL = "{$baseUrl}validation.php";
 ?>
 <!DOCTYPE html>
 <html>
