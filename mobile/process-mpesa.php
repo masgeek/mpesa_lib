@@ -63,8 +63,6 @@ if ($refNumber == null || $customerPhoneNumber == null || $amount == 0 || $trans
     $resp = $mpesa->LipaNaMpesaProcessRequest($lipaNaMpesaPost);
 }
 
-$fp = file_put_contents('logs/' . date('Y_m_d_his-') . 'response.log', $resp);
-
 echo json_encode($resp);
 die();
 

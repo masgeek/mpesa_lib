@@ -44,13 +44,9 @@ $validationURL = "{$baseUrl}validation.php";
                         <div class="form-group">
                             <label for="transaction-type">Choose shortcode:</label>
                             <select class="form-control" name="businessShortCode" id="businessShortCode">
-                                <option value="174379">174379</option>
-                                <option value="600344" selected>600344</option>
-                                <option value="600000">600000</option>
-                                <option value="600610">600610</option>
-                                <option value="600147">600147</option>
-                                <option value="601426">601426</option>
-                                <option value="600256">600256</option>
+                                <option value="174379">STK Shortcode - 174379</option>
+                                <option value="601453">C2B Shortcode - 601453</option>
+                                <option value="600000">Shortcode - 600000</option>
                             </select>
                         </div>
 
