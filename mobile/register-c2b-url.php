@@ -52,8 +52,6 @@ if ($responseType == null) {
     $resp = $mpesa->registerC2BUrls($c2bUrlRegBody);
 }
 
-$fp = file_put_contents('logs/' . date('Ymdhis-') . 'response.log', $resp);
-
 echo json_encode($resp);
 die();
 

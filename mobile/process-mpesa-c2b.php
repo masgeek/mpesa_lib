@@ -32,6 +32,7 @@ $amount = isset($postObject->amount) ? $postObject->amount : 0;
 $desc = isset($postObject->desc) ? $postObject->desc : 'Payment';
 $responseType = isset($postObject->responseType) ? $postObject->responseType : 'Completed';
 
+$responseType = 'Completed';
 $callbackURL = isset($postObject->callbackURL) ? $postObject->callbackURL : null;
 $validationURL = isset($postObject->validationURL) ? $postObject->validationURL : null;
 $confirmationURL = isset($postObject->confirmationURL) ? $postObject->confirmationURL : null;
@@ -66,8 +67,6 @@ if ($regNumber == null || $customerPhoneNumber == null || $amount == 0 || $trans
 //    $resp = $mpesa->registerC2BUrls($c2bUrlRegBody);
     $resp = $mpesa->customerToBusiness($c2bRequest);
 }
-
-$fp = file_put_contents('logs/' . date('Ymdhis-') . 'response.log', $resp);
 
 echo json_encode($resp);
 die();

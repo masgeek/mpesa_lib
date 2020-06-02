@@ -15,3 +15,31 @@ $log = Logger::getLogger('confirmation');
 
 
 $log->info(json_decode($callbackJSONData));
+
+/*
+Reject an Mpesa transaction
+by replying with the below code
+*/
+
+$failResp = [
+    "ResultCode" => 1,
+    "ResultDesc" => "Failed",
+    "ThirdPartyTransID" => 0
+];
+
+
+/*
+Accept an Mpesa transaction
+by replying with the below code
+*/
+
+$successResp = [
+    "ResultCode" => 0,
+    "ResultDesc" => "Completed",
+    "ThirdPartyTransID" => 0
+];
+
+$log->info(json_decode($callbackJSONData));
+
+echo json_encode($successResp);
+die();

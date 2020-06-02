@@ -34,7 +34,7 @@ by replying with the below code
 
 $successResp = [
     "ResultCode" => 0,
-    "ResultDesc" => "Accepted",
+    "ResultDesc" => "Completed",
     "ThirdPartyTransID" => 0
 ];
 

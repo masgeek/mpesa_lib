@@ -5,7 +5,7 @@ $realPhoneNumber = "254713196504";
 $testAmount = 1;
 
 //$callbackURL = 'https://webhook.site/ae877091-9700-40da-8016-b02114ab3d01';
-$baseUrl = "http://stockpos.adotpdemo.co.ke/checkout/trans/";
+$baseUrl = "https://littlereuby.com/checkout/mobile/";
 $callbackURL = "{$baseUrl}callback.php";
 $confirmationURL = "{$baseUrl}confirmation.php";
 $validationURL = "{$baseUrl}validation.php";
