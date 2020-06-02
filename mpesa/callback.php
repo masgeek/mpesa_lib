@@ -23,17 +23,18 @@ Logger::configure($root_dir . '/config/config.xml');
 $callbackParams = serialize($_POST);
 
 // Fetch a logger, it will inherit settings from the root logger
-$log = Logger::getLogger('myLogger');
-
-// Start logging
-$log->info(json_decode($callbackJSONData));
-
+$log = Logger::getLogger('callback');
 
 if (strlen($callbackJSONData) > 2) {
-    $data = \mpesa\TransactionCallBacks::processSTKPushRequestCallback($callbackJSONData, true);
+    //$data = \mpesa\TransactionCallBacks::processSTKPushRequestCallback($callbackJSONData, true);
 }
 
+
+$log->info(json_decode($callbackJSONData));
 
 $callback = new \helper\DATABASE_HELPER();
 
 $resp = $callback->WriteSTKToDatabase($data);
+
+echo json_encode($resp);
+die();

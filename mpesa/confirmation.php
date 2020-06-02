@@ -1,21 +1,10 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: masgeek
- * Date: 08-Feb-18
- * Time: 11:
- *
- * @var $callback \helper\DATABASE_HELPER
- */
 $root_dir = dirname(dirname(__FILE__));
 
 require_once $root_dir . '/vendor/autoload.php';
-require_once 'TransactionCallBacks.php';
-require_once $root_dir . '/helpers/DATABASE_HELPER.php';
 
-$data = [];
+
 $callbackJSONData = file_get_contents('php://input');
-
 
 // Tell log4php to use our configuration file.
 Logger::configure($root_dir . '/config/config.xml');
@@ -23,17 +12,31 @@ Logger::configure($root_dir . '/config/config.xml');
 $callbackParams = serialize($_POST);
 
 // Fetch a logger, it will inherit settings from the root logger
-$log = Logger::getLogger('myLogger');
+$log = Logger::getLogger('confirmation');
 
 // Start logging
+
+
+$failResp = [
+    "ResultCode" => 1,
+    "ResultDesc" => "Failed",
+    "ThirdPartyTransID" => 0
+];
+
+
+/*
+Accept an Mpesa transaction
+by replying with the below code
+*/
+
+$successResp = [
+    "ResultCode" => 0,
+    "ResultDesc" => "Accepted",
+    "ThirdPartyTransID" => 0
+];
+
+
 $log->info(json_decode($callbackJSONData));
 
-
-if (strlen($callbackJSONData) > 2) {
-    $data = \mpesa\TransactionCallBacks::processSTKPushRequestCallback($callbackJSONData, true);
-}
-
-
-$callback = new \helper\DATABASE_HELPER();
-
-$resp = $callback->WriteSTKToDatabase($data);
+echo json_encode($successResp);
+die();

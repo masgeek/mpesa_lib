@@ -1,14 +1,35 @@
 <configuration xmlns="http://logging.apache.org/log4php/">
-    <appender name="myAppender" class="LoggerAppenderFile">
-        <param name="file" value="logs/myLog.log" />
+    <appender name="confirmation" class="LoggerAppenderDailyFile">
+        <layout class="LoggerLayoutPattern">
+            <param name="conversionPattern" value="%date %logger %-5level %msg%n"/>
+        </layout>
+        <param name="file" value="logs/confirmation-%s.log"/>
+        <param name="datePattern" value="Ymd"/>
     </appender>
-    <appender name="default" class="LoggerAppenderDailyFile">
-        <layout class="LoggerLayoutSimple" />
-        <param name="file" value="logs/file-%s.log" />
-        <param name="datePattern" value="Y-m-d" />
+    <appender name="validation" class="LoggerAppenderDailyFile">
+        <layout class="LoggerLayoutPattern">
+            <param name="conversionPattern" value="%date %logger %-5level %msg%n"/>
+        </layout>
+        <param name="file" value="logs/validation-%s.log"/>
+        <param name="datePattern" value="Ymd"/>
     </appender>
-    <root>
-        <level value="INFO" />
-        <appender_ref ref="default" />
-    </root>
+    <appender name="callback" class="LoggerAppenderDailyFile">
+        <layout class="LoggerLayoutPattern">
+            <param name="conversionPattern" value="%date %logger %-5level %msg%n"/>
+        </layout>
+        <param name="file" value="logs/callbacks-%s.log"/>
+        <param name="datePattern" value="Ymd"/>
+    </appender>
+    <logger name="confirmation">
+        <level value="INFO"/>
+        <appender_ref ref="confirmation"/>
+    </logger>
+    <logger name="validation">
+        <level value="INFO"/>
+        <appender_ref ref="validation"/>
+    </logger>
+    <logger name="callback">
+        <level value="INFO"/>
+        <appender_ref ref="callback"/>
+    </logger>
 </configuration>
