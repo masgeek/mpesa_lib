@@ -26,7 +26,7 @@ $callbackParams = serialize($_POST);
 $log = Logger::getLogger('callback');
 
 if (strlen($callbackJSONData) > 2) {
-    //$data = \mpesa\TransactionCallBacks::processSTKPushRequestCallback($callbackJSONData, true);
+    $data = \mpesa\TransactionCallBacks::processSTKPushRequestCallback($callbackJSONData, true);
 }
 
 

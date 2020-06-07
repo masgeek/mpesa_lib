@@ -46,7 +46,7 @@ $validationURL = "{$baseUrl}validation.php";
                             <select class="form-control" name="businessShortCode" id="businessShortCode">
                                 <option value="174379">STK Shortcode - 174379</option>
                                 <option value="601453">C2B Shortcode - 601453</option>
-                                <option value="600000">Shortcode - 600000</option>
+                                <option value="600000">Shortcode 2 - 600000</option>
                             </select>
                         </div>
 
@@ -151,7 +151,8 @@ $validationURL = "{$baseUrl}validation.php";
     </div>
 </div>
 </body>
-<script type="text/javascript" src="../vendor/bower-asset/jquery/dist/jquery.min.js"></script>
+<!--<script type="text/javascript" src="../vendor/bower-asset/jquery/dist/jquery.min.js"></script>-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript" src="../vendor/bower-asset/jquery.maskedinput/src/jquery.maskedinput.js"></script>
 <script type="text/javascript" src="../vendor/bower-asset/bootstrap/dist/js/bootstrap.js"></script>
 <script type="text/javascript" src="js/ajaxCalls.js"></script>

@@ -163,10 +163,12 @@ class MpesaFactory
             $response = $this->client->request('POST', $uri, [
                 'headers' => [
                     'Authorization' => "Bearer {$token}",
-                    'Content-Type' => 'application/json',
+                    'Content-Type' => "application/json",
                 ],
                 'body' => json_encode($body)
             ]);
+
+
             $bodyContent = $response->getBody()->getContents();
             $content = json_decode($bodyContent);
         } catch (ClientException $exception) {

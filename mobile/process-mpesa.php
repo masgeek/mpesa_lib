@@ -55,7 +55,7 @@ if ($refNumber == null || $customerPhoneNumber == null || $amount == 0 || $trans
         'PartyA' => $customerPhoneNumber,
         'PartyB' => $businessShortCode,
         'PhoneNumber' => $customerPhoneNumber,
-        'CallBackURL' => "{$callbackURL}{$callbackParams}",
+        'CallBackURL' => "{$callbackURL}",
         'AccountReference' => $refNumber,
         'TransactionDesc' => $desc
     );
